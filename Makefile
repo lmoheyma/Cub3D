@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+         #
+#    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/14 15:59:22 by aleite-b         ###   ########.fr        #
+#    Updated: 2024/02/14 16:28:25 by lmoheyma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,6 @@ SOURCES = mandatory/src/main.c \
 			mandatory/src/exec/color_utils.c \
 			mandatory/src/exec/utils.c \
 			mandatory/src/exec/utils2.c \
-			mandatory/src/exec/xpm.c \
 			mandatory/src/exec/play_game.c \
 
 BSOURCES = bonus/src/main.c \
