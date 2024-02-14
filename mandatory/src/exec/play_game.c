@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   play_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 16:07:45 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:25:05 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,13 @@ int	close_window(t_cub3d *cub)
 	free(cub->param);
 	free_vars(cub->vars);
 	exit(0);
+}
+
+int	mouse_move_hook(int x, int y, t_cub3d *cub)
+{
+	mlx_mouse_get_pos(cub->ptr, cub->window, &x, &y);
+	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
+	return (0);
 }
 
 void	play_game(t_cub3d cub, t_vars *vars)
