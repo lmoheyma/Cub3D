@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
+#    By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/14 16:28:25 by lmoheyma         ###   ########.fr        #
+#    Updated: 2024/02/14 16:54:04 by aleite-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -57,13 +57,13 @@ BSOURCES = bonus/src/main.c \
 			bonus/src/map/init_game.c \
 			bonus/src/exec/init.c \
 			bonus/src/exec/raycasting.c \
-			bonus/src/exec/door.c \
 			bonus/src/exec/texture.c \
+			bonus/src/exec/move_manager.c \
 			bonus/src/exec/move.c \
 			bonus/src/exec/rotate.c \
 			bonus/src/exec/color_utils.c \
 			bonus/src/exec/utils.c \
-			bonus/src/exec/xpm.c \
+			bonus/src/exec/utils2.c \
 			bonus/src/exec/play_game.c \
 			bonus/src/minimap/minimap.c \
 			

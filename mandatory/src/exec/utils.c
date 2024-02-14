@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 16:19:25 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:51:48 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,8 @@ void	listen_input(t_cub3d *cub)
 	mlx_hook(cub->window, ClientMessage, NoEventMask, close_window, cub);
 	mlx_hook(cub->window, KeyPress, KeyPressMask, key_press, cub);
 	mlx_hook(cub->window, KeyRelease, KeyReleaseMask, key_release, cub);
-	mlx_hook(cub->window, MotionNotify, PointerMotionMask, mouse_move_hook, cub);
+	mlx_hook(cub->window, MotionNotify, PointerMotionMask, mouse_move_hook,
+		cub);
 }
 
 int	display(t_cub3d *cub)

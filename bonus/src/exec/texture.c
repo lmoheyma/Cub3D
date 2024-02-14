@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 15:28:38 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:50:44 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,7 @@ void	init_texture_image(t_cub3d *cub, t_tmpimg *img, char *path)
 	img->endian = 0;
 	img->img = mlx_xpm_file_to_image(cub->ptr, path, &width, &height);
 	if (!img->img)
-	{
-		// free
-		exit(1);
-	}
+		close_window(cub);
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->sl,
 			&img->endian);
 }
@@ -46,10 +43,7 @@ int	*convert(t_cub3d *cub, char *path)
 	init_texture_image(cub, &img, path);
 	buffer = ft_calloc(1, sizeof(buffer) * SQUARE * SQUARE);
 	if (!buffer)
-	{
-		// free
-		exit(1);
-	}
+		close_window(cub);
 	while (y < SQUARE)
 	{
 		x = 0;
@@ -66,61 +60,38 @@ int	*convert(t_cub3d *cub, char *path)
 
 void	init_textures(t_cub3d *cub)
 {
-	t_assets *assets;
+	t_assets	*assets;
 
 	assets = cub->vars->assets;
 	cub->param->textures = (int **)ft_calloc(5, sizeof(int *));
 	if (!cub->param->textures)
-	{
-		// free();
-		exit(1);
-	}
+		close_window(cub);
 	cub->param->textures[0] = convert(cub, cub->vars->assets->no_link);
 	cub->param->textures[1] = convert(cub, cub->vars->assets->so_link);
 	cub->param->textures[2] = convert(cub, cub->vars->assets->ea_link);
 	cub->param->textures[3] = convert(cub, cub->vars->assets->we_link);
-	cub->param->c_color = rgb(ft_atoi(assets->c_link[0]), ft_atoi(assets->c_link[1]), ft_atoi(assets->c_link[2]));
-	cub->param->f_color = rgb(ft_atoi(assets->f_link[0]), ft_atoi(assets->f_link[1]), ft_atoi(assets->f_link[2]));
+	cub->param->c_color = rgb(ft_atoi(assets->c_link[0]),
+			ft_atoi(assets->c_link[1]), ft_atoi(assets->c_link[2]));
+	cub->param->f_color = rgb(ft_atoi(assets->f_link[0]),
+			ft_atoi(assets->f_link[1]), ft_atoi(assets->f_link[2]));
 }
 
 void	init_textures_p(t_cub3d *cub)
 {
 	int	i;
 
-	cub->param->textures_p = ft_calloc(HEIGHT + 1, sizeof(cub->param->textures_p));
+	cub->param->textures_p = ft_calloc(HEIGHT + 1,
+			sizeof(cub->param->textures_p));
 	if (!cub->param->textures_p)
-	{
-		// free();
-		exit(1);
-	}
+		close_window(cub);
 	i = 0;
 	while (i < HEIGHT)
 	{
-		cub->param->textures_p[i] = ft_calloc(WIDTH + 1, sizeof(cub->param->textures_p));
+		cub->param->textures_p[i] = ft_calloc(WIDTH + 1,
+				sizeof(cub->param->textures_p));
 		if (!cub->param->textures_p[i])
-		{
-			// free();
-			exit(1);
-		}
+			close_window(cub);
 		i++;
-	}
-}
-
-void	set_directions(t_cub3d *cub)
-{
-	if (cub->side == 0)
-	{
-		if (cub->rayDirX < 0)
-			cub->directions = 3; // West
-		else
-			cub->directions = 2; // East
-	}
-	else
-	{
-		if (cub->rayDirY > 0)
-			cub->directions = 1; // South
-		else
-			cub->directions = 0; // North
 	}
 }
 
@@ -141,8 +112,8 @@ void	update_textures(t_cub3d *cub, int x)
 	{
 		cub->param->y = (int)cub->param->pos & (SQUARE - 1);
 		cub->param->pos += cub->param->step;
-		color = cub->param->textures[cub->directions][SQUARE
-			* cub->param->y + cub->param->x];
+		color = cub->param->textures[cub->directions][SQUARE * cub->param->y
+			+ cub->param->x];
 		if (cub->directions == 0 || cub->directions == 2)
 			cub->param->color = (cub->param->color >> 1) & 8355711;
 		if (color > 0)

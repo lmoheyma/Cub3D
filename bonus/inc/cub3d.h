@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/14 15:55:13 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:56:26 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -152,6 +152,10 @@ typedef struct s_cub3d
 	int			drawStart;
 	int			drawEnd;
 	int			directions;
+	void		*xpm_void;
+	void		*xpm_wall;
+	void		*xpm_mndoor;
+	void		*xpm_player;
 	t_data		*data;
 	t_player	*player;
 	t_vars		*vars;
@@ -209,6 +213,7 @@ void			hook_function(t_cub3d cub);
 int				mouse_move_hook(int x, int y, t_cub3d *cub);
 int				key_hook(int keycode, t_cub3d *cub);
 int				close_window(t_cub3d *cub);
+void			create_frame(t_cub3d *cub);
 
 // Init
 t_data			*init_data(t_vars *vars);

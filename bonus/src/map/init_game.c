@@ -6,11 +6,29 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:30:23 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/14 15:47:39 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:52:40 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+void	init_direction2(t_cub3d *cub)
+{
+	if (cub->player->dir == 'E')
+	{
+		cub->dirX = 1;
+		cub->dirY = 0;
+		cub->planeX = 0;
+		cub->planeY = 0.66;
+	}
+	else if (cub->player->dir == 'W')
+	{
+		cub->dirX = -1;
+		cub->dirY = 0;
+		cub->planeX = 0;
+		cub->planeY = -0.66;
+	}
+}
 
 void	init_direction(t_cub3d *cub)
 {
@@ -28,20 +46,7 @@ void	init_direction(t_cub3d *cub)
 		cub->planeX = -0.66;
 		cub->planeY = 0;
 	}
-	else if (cub->player->dir == 'E')
-	{
-		cub->dirX = 1;
-		cub->dirY = 0;
-		cub->planeX = 0;
-		cub->planeY = 0.66;
-	}
-	else if (cub->player->dir == 'W')
-	{
-		cub->dirX = -1;
-		cub->dirY = 0;
-		cub->planeX = 0;
-		cub->planeY = -0.66;
-	}
+	init_direction2(cub);
 }
 
 void	init_game(t_vars *vars, t_cub3d *cub)

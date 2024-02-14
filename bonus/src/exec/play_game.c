@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 15:48:36 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/14 16:50:15 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ int	close_window(t_cub3d *cub)
 	free(cub->ptr);
 	free(cub->data);
 	free(cub->param);
-	free(cub->xpm);
 	free(cub->minimap);
 	free_vars(cub->vars);
 	exit(0);
@@ -37,20 +36,8 @@ int	close_window(t_cub3d *cub)
 
 int	mouse_move_hook(int x, int y, t_cub3d *cub)
 {
-	int		old_x;
-	double	speed;
-
-	(void)y;
 	mlx_mouse_get_pos(cub->ptr, cub->window, &x, &y);
-	old_x = WIDTH / 2;
-	speed = 0;
-	if (x < old_x)
-		speed = -3.5;
-	else if (x > old_x)
-		speed = 3.5;
-	// if (speed)
-	// 	cub->player->fov += speed;
-	mlx_mouse_move(cub->ptr, cub->window, old_x, HEIGHT / 2);
+	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
 
@@ -66,15 +53,11 @@ void	play_game(t_cub3d cub, t_vars *vars)
 	cub.param = ft_calloc(1, sizeof(t_textures));
 	if (!cub.param)
 		ft_err("Malloc error", vars);
-	cub.xpm = ft_calloc(1, sizeof(t_xpm));
-	if (!cub.xpm)
-		ft_err("Malloc error", vars);
 	cub.vars = vars;
 	init_textures(&cub);
 	init_direction(&cub);
 	cub.minimap = ft_calloc(1, sizeof(t_minimap));
 	if (!cub.minimap)
 		ft_err("Malloc error", vars);
-	// mlx_mouse_hide(cub.ptr, cub.window);
 	main_loop(&cub);
 }
