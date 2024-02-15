@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/15 15:08:41 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:05:45 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ void	init_textures(t_cub3d *cub)
 	cub->param->textures[1] = convert(cub, cub->vars->assets->so_link);
 	cub->param->textures[2] = convert(cub, cub->vars->assets->ea_link);
 	cub->param->textures[3] = convert(cub, cub->vars->assets->we_link);
-	cub->param->textures[4] = convert(cub, "./assets/eagle.xpm");
+	cub->param->textures[4] = convert(cub, "./assets/door.xpm");
 	cub->param->c_color = rgb(ft_atoi(assets->c_link[0]),
 			ft_atoi(assets->c_link[1]), ft_atoi(assets->c_link[2]));
 	cub->param->f_color = rgb(ft_atoi(assets->f_link[0]),
