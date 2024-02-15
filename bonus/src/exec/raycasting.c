@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:10:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 15:48:51 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:58:40 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,36 +31,38 @@ int	raycasting(t_cub3d *cub)
 
 void	init_raycast(t_cub3d *cub, int x)
 {
-	cub->cameraX = 2 * x / (double)WIDTH - 1;
-	cub->rayDirX = cub->dirX + cub->planeX * cub->cameraX;
-	cub->rayDirY = cub->dirY + cub->planeY * cub->cameraX;
-	cub->mapX = (int)(cub->player->p_x);
-	cub->mapY = (int)(cub->player->p_y);
-	cub->deltaDistX = fabs(1 / cub->rayDirX);
-	cub->deltaDistY = fabs(1 / cub->rayDirY);
+	cub->camera_x = 2 * x / (double)WIDTH - 1;
+	cub->raydir_x = cub->dir_x + cub->plane_x * cub->camera_x;
+	cub->raydir_y = cub->dir_y + cub->plane_y * cub->camera_x;
+	cub->map_x = (int)(cub->player->p_x);
+	cub->map_y = (int)(cub->player->p_y);
+	cub->delta_dist_x = fabs(1 / cub->raydir_x);
+	cub->delta_dist_y = fabs(1 / cub->raydir_y);
 }
 
 void	dda(t_cub3d *cub)
 {
-	if (cub->rayDirX < 0)
+	if (cub->raydir_x < 0)
 	{
-		cub->stepX = -1;
-		cub->sideDistX = (cub->player->p_x - cub->mapX) * cub->deltaDistX;
+		cub->step_x = -1;
+		cub->side_dist_x = (cub->player->p_x - cub->map_x) * cub->delta_dist_x;
 	}
 	else
 	{
-		cub->stepX = 1;
-		cub->sideDistX = (cub->mapX + 1.0 - cub->player->p_x) * cub->deltaDistX;
+		cub->step_x = 1;
+		cub->side_dist_x = (cub->map_x + 1.0 - cub->player->p_x)
+			* cub->delta_dist_x;
 	}
-	if (cub->rayDirY < 0)
+	if (cub->raydir_y < 0)
 	{
-		cub->stepY = -1;
-		cub->sideDistY = (cub->player->p_y - cub->mapY) * cub->deltaDistY;
+		cub->step_y = -1;
+		cub->side_dist_y = (cub->player->p_y - cub->map_y) * cub->delta_dist_y;
 	}
 	else
 	{
-		cub->stepY = 1;
-		cub->sideDistY = (cub->mapY + 1.0 - cub->player->p_y) * cub->deltaDistY;
+		cub->step_y = 1;
+		cub->side_dist_y = (cub->map_y + 1.0 - cub->player->p_y)
+			* cub->delta_dist_y;
 	}
 }
 
@@ -71,22 +73,22 @@ void	dda2(t_cub3d *cub)
 	hit = 0;
 	while (hit == 0)
 	{
-		if (cub->sideDistX < cub->sideDistY)
+		if (cub->side_dist_x < cub->side_dist_y)
 		{
-			cub->sideDistX += cub->deltaDistX;
-			cub->mapX += cub->stepX;
+			cub->side_dist_x += cub->delta_dist_x;
+			cub->map_x += cub->step_x;
 			cub->side = 0;
 		}
 		else
 		{
-			cub->sideDistY += cub->deltaDistY;
-			cub->mapY += cub->stepY;
+			cub->side_dist_y += cub->delta_dist_y;
+			cub->map_y += cub->step_y;
 			cub->side = 1;
 		}
-		if (cub->mapY < 0.25 || cub->mapX < 0.25 || cub->mapY > HEIGHT - 0.25
-			|| cub->mapX > WIDTH - 1.25)
+		if (cub->map_y < 0.25 || cub->map_x < 0.25 || cub->map_y > HEIGHT - 0.25
+			|| cub->map_x > WIDTH - 1.25)
 			break ;
-		if (cub->vars->map[cub->mapY][cub->mapX] > '0')
+		if (ft_strchr("1P", cub->vars->map[cub->map_y][cub->map_x]))
 			hit = 1;
 	}
 }
@@ -94,19 +96,19 @@ void	dda2(t_cub3d *cub)
 void	line_height(t_cub3d *cub)
 {
 	if (cub->side == 0)
-		cub->perpWallDist = (cub->sideDistX - cub->deltaDistX);
+		cub->perp_wall_dist = (cub->side_dist_x - cub->delta_dist_x);
 	else
-		cub->perpWallDist = (cub->sideDistY - cub->deltaDistY);
-	cub->lineHeight = (int)(HEIGHT / cub->perpWallDist);
-	cub->drawStart = -(cub->lineHeight / 2) + (HEIGHT / 2);
-	if (cub->drawStart < 0)
-		cub->drawStart = 0;
-	cub->drawEnd = (cub->lineHeight / 2) + (HEIGHT / 2);
-	if (cub->drawEnd >= HEIGHT)
-		cub->drawEnd = HEIGHT - 1;
+		cub->perp_wall_dist = (cub->side_dist_y - cub->delta_dist_y);
+	cub->line_height = (int)(HEIGHT / cub->perp_wall_dist);
+	cub->draw_start = -(cub->line_height / 2) + (HEIGHT / 2);
+	if (cub->draw_start < 0)
+		cub->draw_start = 0;
+	cub->draw_end = (cub->line_height / 2) + (HEIGHT / 2);
+	if (cub->draw_end >= HEIGHT)
+		cub->draw_end = HEIGHT - 1;
 	if (cub->side == 0)
-		cub->wall_x = cub->player->p_y + cub->perpWallDist * cub->rayDirY;
+		cub->wall_x = cub->player->p_y + cub->perp_wall_dist * cub->raydir_y;
 	else
-		cub->wall_x = cub->player->p_x + cub->perpWallDist * cub->rayDirX;
+		cub->wall_x = cub->player->p_x + cub->perp_wall_dist * cub->raydir_x;
 	cub->wall_x -= floor(cub->wall_x);
 }

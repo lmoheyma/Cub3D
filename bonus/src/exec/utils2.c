@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 17:10:04 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 14:01:38 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,16 +63,18 @@ void	set_directions(t_cub3d *cub)
 {
 	if (cub->side == 0)
 	{
-		if (cub->rayDirX < 0)
+		if (cub->raydir_x < 0)
 			cub->directions = 3;
 		else
 			cub->directions = 2;
 	}
 	else
 	{
-		if (cub->rayDirY > 0)
+		if (cub->raydir_y > 0)
 			cub->directions = 1;
 		else
 			cub->directions = 0;
 	}
+	if (cub->vars->map[cub->map_y][cub->map_x] == 'P')
+		cub->directions = 4;
 }

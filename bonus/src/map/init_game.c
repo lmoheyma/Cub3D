@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 16:30:23 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/14 16:52:40 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 13:52:28 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,17 +16,17 @@ void	init_direction2(t_cub3d *cub)
 {
 	if (cub->player->dir == 'E')
 	{
-		cub->dirX = 1;
-		cub->dirY = 0;
-		cub->planeX = 0;
-		cub->planeY = 0.66;
+		cub->dir_x = 1;
+		cub->dir_y = 0;
+		cub->plane_x = 0;
+		cub->plane_y = 0.66;
 	}
 	else if (cub->player->dir == 'W')
 	{
-		cub->dirX = -1;
-		cub->dirY = 0;
-		cub->planeX = 0;
-		cub->planeY = -0.66;
+		cub->dir_x = -1;
+		cub->dir_y = 0;
+		cub->plane_x = 0;
+		cub->plane_y = -0.66;
 	}
 }
 
@@ -34,17 +34,17 @@ void	init_direction(t_cub3d *cub)
 {
 	if (cub->player->dir == 'N')
 	{
-		cub->dirX = 0;
-		cub->dirY = -1;
-		cub->planeX = 0.66;
-		cub->planeY = 0;
+		cub->dir_x = 0;
+		cub->dir_y = -1;
+		cub->plane_x = 0.66;
+		cub->plane_y = 0;
 	}
 	else if (cub->player->dir == 'S')
 	{
-		cub->dirX = 0;
-		cub->dirY = 1;
-		cub->planeX = -0.66;
-		cub->planeY = 0;
+		cub->dir_x = 0;
+		cub->dir_y = 1;
+		cub->plane_x = -0.66;
+		cub->plane_y = 0;
 	}
 	init_direction2(cub);
 }

@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/14 16:56:26 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 15:07:56 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@
 # define KEY_S 115
 # define KEY_D 100
 # define KEY_ESC 65307
+# define KEY_SPACE 0x0020
 # define KEY_LEFT_ARROW 65361
 # define KEY_UP_ARROW 65362
 # define KEY_RIGHT_ARROW 65363
@@ -128,29 +129,29 @@ typedef struct s_cub3d
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
-	double		dirX;
-	double		dirY;
-	int			mapX;
-	int			mapY;
-	double		planeX;
-	double		planeY;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	double		plane_x;
+	double		plane_y;
 	double		time;
-	double		oldTime;
-	double		cameraX;
-	double		rayDirX;
-	double		rayDirY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
+	double		old_time;
+	double		camera_x;
+	double		raydir_x;
+	double		raydir_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
 	int			side;
-	int			stepX;
-	int			stepY;
-	int			lineHeight;
+	int			step_x;
+	int			step_y;
+	int			line_height;
 	double		wall_x;
-	int			drawStart;
-	int			drawEnd;
+	int			draw_start;
+	int			draw_end;
 	int			directions;
 	void		*xpm_void;
 	void		*xpm_wall;
@@ -180,6 +181,9 @@ void			dda2(t_cub3d *cub);
 void			line_height(t_cub3d *cub);
 void			init_direction(t_cub3d *cub);
 
+// Door
+void			door_check(t_cub3d *cub);
+
 // Color utils
 void			put_pixel(t_tmpimg *img, int x, int y, int color);
 int				rgb(int r, int g, int b);
@@ -191,8 +195,8 @@ void			set_directions(t_cub3d *cub);
 void			update_textures(t_cub3d *cub, int x);
 
 // Rotate camera
-int				rotate_right(t_cub3d *cub);
-int				rotate_left(t_cub3d *cub);
+int				rotate_right(t_cub3d *cub, double speed);
+int				rotate_left(t_cub3d *cub, double speed);
 int				rotate_player(t_cub3d *cub, int rotate);
 void			mouse_rotate(t_cub3d *cub, double speed);
 
@@ -214,6 +218,7 @@ int				mouse_move_hook(int x, int y, t_cub3d *cub);
 int				key_hook(int keycode, t_cub3d *cub);
 int				close_window(t_cub3d *cub);
 void			create_frame(t_cub3d *cub);
+int				display(t_cub3d *cub);
 
 // Init
 t_data			*init_data(t_vars *vars);
@@ -238,6 +243,7 @@ char			*put_link_of_asset(char *asset_case, char *s, t_vars *vars,
 void			init_assets(t_vars *vars, void *ptr);
 void			update_color_link(char ***old_link, char *new_link,
 					t_vars *vars, char **lines_of_files);
+char			**check_colors(char *s, t_vars *vars);
 
 // FILE
 

@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:23:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 16:49:25 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 12:00:14 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,8 +35,8 @@ int	rotate_player(t_cub3d *cub, int rotate)
 	int	move;
 
 	if (rotate == 1)
-		move = rotate_right(cub);
+		move = rotate_right(cub, 0.05);
 	else
-		move = rotate_left(cub);
+		move = rotate_left(cub, -0.05);
 	return (move);
 }

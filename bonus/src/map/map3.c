@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map3.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:16:31 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/11 02:34:18 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:19:17 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,16 +53,16 @@ int	empty_mid_z2(char **lines_of_files, int j, int i)
 	int	tmpj;
 
 	tmpj = j;
-	while (lines_of_files[tmpj + 1] && ft_strchr("0NSEW",
+	while (lines_of_files[tmpj + 1] && ft_strchr("0PVNSEW",
 			lines_of_files[tmpj][i]))
 		tmpj++;
-	if (!ft_strchr("0NSEW", lines_of_files[tmpj][i])
+	if (!ft_strchr("0PVNSEW", lines_of_files[tmpj][i])
 		&& lines_of_files[tmpj][i] != '1')
 		return (1);
 	tmpj = j;
-	while (tmpj > 0 && ft_strchr("0NSEW", lines_of_files[tmpj][i]))
+	while (tmpj > 0 && ft_strchr("0PVNSEW", lines_of_files[tmpj][i]))
 		tmpj--;
-	if (!ft_strchr("0NSEW", lines_of_files[tmpj][i])
+	if (!ft_strchr("0PVNSEW", lines_of_files[tmpj][i])
 		&& lines_of_files[tmpj][i] != '1')
 		return (1);
 	return (0);
@@ -73,13 +73,13 @@ int	empty_mid_z(char **lines_of_files, int j, int i)
 	int	tmpi;
 
 	tmpi = i;
-	while (lines_of_files[j][tmpi] && ft_strchr("0NSEW",
+	while (lines_of_files[j][tmpi] && ft_strchr("0PVNSEW",
 			lines_of_files[j][tmpi]))
 		tmpi++;
 	if (lines_of_files[j][tmpi] && lines_of_files[j][tmpi] != '1')
 		return (1);
 	tmpi = i;
-	while (tmpi > 0 && ft_strchr("0NSEW", lines_of_files[j][tmpi]))
+	while (tmpi > 0 && ft_strchr("0PVNSEW", lines_of_files[j][tmpi]))
 		tmpi--;
 	if (lines_of_files[j][tmpi] != '1')
 		return (1);
@@ -103,7 +103,7 @@ int	mid_of_map(char **lines_of_files, int j)
 			if (empty_mid_s(lines_of_files, j, i))
 				return (1);
 		}
-		else if (ft_strchr("0NSEW", lines_of_files[j][i]))
+		else if (ft_strchr("0PVNSEW", lines_of_files[j][i]))
 			if (empty_mid_z(lines_of_files, j, i))
 				return (1);
 		i++;

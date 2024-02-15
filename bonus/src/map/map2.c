@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:16:31 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/12 10:07:19 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/15 11:19:10 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ int	check_char(char **lines_of_files)
 		j = 0;
 		while (lines_of_files[i][j])
 		{
-			if (!(ft_strchr("01NSEW", lines_of_files[i][j])
+			if (!(ft_strchr("0PV1NSEW", lines_of_files[i][j])
 				|| lines_of_files[i][j] == 32 || (lines_of_files[i][j] >= 9
 						&& lines_of_files[i][j] <= 13)))
 				return (1);
