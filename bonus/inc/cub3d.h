@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/16 02:15:35 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 03:47:33 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,8 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # define PI 3.14159265358979323846
 # define SQUARE 64
 # define HALF_SQUARE 32
@@ -43,6 +43,25 @@
 # define KEY_UP_ARROW 65362
 # define KEY_RIGHT_ARROW 65363
 # define KEY_DOWN_ARROW 65364
+
+typedef struct s_fc
+{
+	int		p;
+	int		cell_x;
+	int		cell_y;
+	int		t_x;
+	int		t_y;
+	float	raydir_x0;
+	float	raydir_y0;
+	float	raydir_x1;
+	float	raydir_y1;
+	float	pos_z;
+	float	row_distance;
+	float	floor_step_x;
+	float	floor_step_y;
+	float	floor_x;
+	float	floor_y;
+} t_fc;
 
 typedef struct s_assets
 {
@@ -193,11 +212,13 @@ typedef struct s_cub3d
 	t_tmpimg		*tmp;
 	t_sprite		**sprite;
 	t_sprite_param	*s_param;
+	t_fc			*f_c;
 }					t_cub3d;
 
 // Sprites
 void				init_sprite(t_cub3d *cub);
 void				display_sprite(t_cub3d *cub);
+
 // Minimap
 void				fshow_minimap(t_cub3d *cub);
 void				fsetup_images(t_cub3d *cub);
@@ -213,6 +234,9 @@ void				dda(t_cub3d *cub);
 void				dda2(t_cub3d *cub);
 void				line_height(t_cub3d *cub);
 void				init_direction(t_cub3d *cub);
+
+// Floor & Ceiling
+void				floor_ceiling(t_cub3d *cub, int y);
 
 // Door
 void				door_check(t_cub3d *cub);

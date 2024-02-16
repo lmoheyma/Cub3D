@@ -1,14 +1,14 @@
 
-NO ./assets/red.xpm
+NO ./assets/wall_1.xpm
 
-EA ./assets/eagle.xpm
+EA ./assets/wall_3.xpm
 
-WE 	./assets/greystone.xpm
+WE ./assets/wood.xpm
 
-SO  ./assets/purplestone.xpm
+SO  ./assets/wall_2.xpm
 
-F   100,100,50
-C   128,208,208
+F   39,82,20
+C   13,49,75
 
         1111111111111111111111111
         1000000000110000000000001
