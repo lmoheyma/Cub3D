@@ -1,7 +1,7 @@
 leak check valgrind
 texture width height
 sprites
-porte inverse ad on change de direction
+porte inverse qd on change de direction
 
 cour prison, avec des murs de prison
 faire un vrai chien qui bouge (sprites)

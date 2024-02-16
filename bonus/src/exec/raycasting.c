@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:10:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 04:41:43 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 04:52:11 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ int	raycasting(t_cub3d *cub)
 		dda2(cub);
 		line_height(cub);
 		update_textures(cub, x);
-		// display_sprite(cub);
 		x++;
 	}
+	display_sprite(cub);
 	return (0);
 }
 
