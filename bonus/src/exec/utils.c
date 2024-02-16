@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 15:21:42 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:19:06 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,12 +66,18 @@ int	display(t_cub3d *cub)
 	int	i;
 
 	cub->player->has_move += move_player(cub);
-	if (cub->player->has_move == 0)
-		return (0);
+	// if (cub->player->has_move == 0)
+	// 	return (0);
 	init_textures_p(cub);
 	raycasting(cub);
+	display_sprite(cub, 0);
+	int y = -1;
+	while (++y < 10000)
+		display_sprite(cub, 5);
+	display_sprite(cub, 6);
 	create_frame(cub);
 	show_minimap(cub);
+	usleep(100);
 	// printf("x = %f   y = %f\n", cub->player->p_x, cub->player->p_y);
 	i = 0;
 	while (i < HEIGHT)
@@ -89,6 +95,9 @@ void	main_loop(t_cub3d *cub)
 
 	init_textures_p(cub);
 	raycasting(cub);
+	display_sprite(cub, 0);
+	display_sprite(cub, 5);
+	display_sprite(cub, 6);
 	create_frame(cub);
 	setup_images(cub);
 	show_minimap(cub);

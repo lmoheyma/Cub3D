@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/16 14:50:15 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:13:36 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -217,7 +217,7 @@ typedef struct s_cub3d
 
 // Sprites
 void				init_sprite(t_cub3d *cub);
-void				display_sprite(t_cub3d *cub);
+void				display_sprite(t_cub3d *cub, int index);
 
 // Minimap
 void				fshow_minimap(t_cub3d *cub);

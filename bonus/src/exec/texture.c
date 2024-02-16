@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 04:42:57 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 19:14:04 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,24 @@ int	*convert(t_cub3d *cub, char *path)
 	return (buffer);
 }
 
+void add_torchs_textures(t_cub3d *cub)
+{
+	cub->param->textures[6] = convert(cub, "./assets/torch/torch1.xpm");
+	cub->param->textures[7] = convert(cub, "./assets/torch/torch2.xpm");
+	// cub->param->textures[8] = convert(cub, "./assets/torch/torch3.xpm");
+	// cub->param->textures[9] = convert(cub, "./assets/torch/torch4.xpm");
+	// cub->param->textures[10] = convert(cub, "./assets/torch/torch5.xpm");
+	// cub->param->textures[11] = convert(cub, "./assets/torch/torch6.xpm");
+	// cub->param->textures[12] = convert(cub, "./assets/torch/torch7.xpm");
+	// cub->param->textures[13] = convert(cub, "./assets/torch/torch8.xpm");
+}
+
 void	init_textures(t_cub3d *cub)
 {
 	t_assets	*assets;
 
 	assets = cub->vars->assets;
-	cub->param->textures = (int **)ft_calloc(8, sizeof(int *));
+	cub->param->textures = (int **)ft_calloc(9, sizeof(int *));
 	if (!cub->param->textures)
 		close_window(cub);
 	cub->param->textures[0] = convert(cub, cub->vars->assets->no_link);
@@ -78,6 +90,9 @@ void	init_textures(t_cub3d *cub)
 			ft_atoi(assets->f_link[1]), ft_atoi(assets->f_link[2]));
 	// cub->param->textures[6] = convert(cub, "./assets/sky1.xpm");
 	// cub->param->textures[7] = convert(cub, "./assets/wall_1.xpm");
+	// printf("test\n");
+	// cub->param->textures[6] = convert(cub, "./assets/torch/torch1.xpm");
+	add_torchs_textures(cub);
 }
 
 void	init_textures_p(t_cub3d *cub)
