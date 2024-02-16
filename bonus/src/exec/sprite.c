@@ -6,13 +6,13 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 00:18:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 02:28:17 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:14:33 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-t_sprite	*add_sprite(t_cub3d *cub, int x, int y, int texture)
+t_sprite	*add_sprite(t_cub3d *cub, double x, double y, int texture)
 {
 	t_sprite	*sprite;
 
@@ -27,7 +27,7 @@ t_sprite	*add_sprite(t_cub3d *cub, int x, int y, int texture)
 
 void	init_sprite(t_cub3d *cub)
 {
-	cub->param->nb_sprite = 1;
+	cub->param->nb_sprite = 5;
 	cub->sprite = (t_sprite **)ft_calloc(cub->param->nb_sprite + 1,
 			sizeof(t_sprite *));
 	if (!cub->sprite)
@@ -35,8 +35,11 @@ void	init_sprite(t_cub3d *cub)
 	cub->s_param->z_buffer = (double *)ft_calloc(WIDTH, sizeof(double));
 	if (!cub->s_param->z_buffer)
 		close_window(cub);
-	cub->sprite[0] = add_sprite(cub, 21, 2, 5);
-	// cub->sprite[1] = add_sprite(cub, 3, 4, 5);
+	cub->sprite[0] = add_sprite(cub, 30, 3, 5);
+	cub->sprite[1] = add_sprite(cub, 16.7, 5.7, 5);
+	cub->sprite[2] = add_sprite(cub, 17.5, 1.5, 5);
+	cub->sprite[3] = add_sprite(cub, 4.5, 12.5, 5);
+	cub->sprite[4] = add_sprite(cub, 12.5, 12.5, 5);
 }
 
 void	display_sprite(t_cub3d *cub)
@@ -73,7 +76,6 @@ void	display_sprite(t_cub3d *cub)
 		if (s_p->draw_end_x >= WIDTH)
 			s_p->draw_end_x = WIDTH - 1;
 		stripe = s_p->draw_start_x;
-		// printf("%d\n", s_p->draw_end_x);
 		while (stripe < s_p->draw_end_x)
 		{
 			s_p->texture_x = (int)(256 * (stripe - (-s_p->sprite_width / 2 + s_p->sprite_screen_x)) * SQUARE / s_p->sprite_width) / 256;

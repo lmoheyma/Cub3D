@@ -1,11 +1,11 @@
 
 NO ./assets/wall_1.xpm
 
-EA ./assets/wall_3.xpm
+EA ./assets/wall_1.xpm
 
-WE ./assets/wood.xpm
+WE ./assets/wall_1.xpm
 
-SO  ./assets/wall_2.xpm
+SO  ./assets/wall_1.xpm
 
 F   82,84,88
 C   13,49,75

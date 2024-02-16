@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/16 04:38:30 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:50:15 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -142,8 +142,8 @@ typedef struct s_tmpimg
 
 typedef struct s_sprite
 {
-	int				x;
-	int				y;
+	double				x;
+	double				y;
 	int				texture;
 }					t_sprite;
 

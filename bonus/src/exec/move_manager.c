@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   move_manager.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:23:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/15 12:00:14 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/16 14:56:33 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,8 @@ int	move_player(t_cub3d *cub)
 int	rotate_player(t_cub3d *cub, int rotate)
 {
 	int	move;
-
+	
+	move = 0;
 	if (rotate == 1)
 		move = rotate_right(cub, 0.05);
 	else

@@ -1,17 +1,7 @@
 leak check valgrind
 texture width height
 sprites
-porte inverse qd on change de direction
-
-cour prison, avec des murs de prison
-faire un vrai chien qui bouge (sprites)
-les cles qui vont dans la poche
-afficher les cles en haut a droite
-fin : porte final avec une texure differente si je trouve
-	-> on peut l'ouvrit seulement avec les 5 cles
-	-> les afficher sur la minimap
-	-> afficher la fin du jeu !!!
-
+texture inverse qd on change de direction
 
 Valgrind :
 Conditional jumps avec assets invalid ou entierrement vide

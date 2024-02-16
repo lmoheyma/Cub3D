@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 03:23:52 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 15:02:45 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	mouse_move_hook(int x, int y, t_cub3d *cub)
 	mlx_mouse_get_pos(cub->ptr, cub->window, &x, &y);
 	if (x == old_x)
 		return (0);
-	if (abs(x - old_x) < 10)
+	if (abs(x - old_x) < 20)
 		return (0);
 	speed = 0;
 	if (x < old_x)
@@ -67,9 +67,35 @@ int	mouse_move_hook(int x, int y, t_cub3d *cub)
 		rotate_left(cub, speed);
 	cub->player->has_move += 1;
 	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
-	display(cub);
+	// display(cub);
 	return (0);
 }
+
+// int	mouse_move_hook(int x, int y, t_cub3d *cub)
+// {
+// 	static int		old_x = WIDTH / 2;
+// 	(void)y;
+	
+// 	if (x > WIDTH - 20)
+// 	{
+// 		x = 20;
+// 		mlx_mouse_move(cub->ptr, cub->window, x, y);
+// 	}
+// 	if (x < 20)
+// 	{
+// 		x = WIDTH - 20;
+// 		mlx_mouse_move(cub->ptr, cub->window, x, y);
+// 	}
+// 	if (x == old_x)
+// 		return (0);
+// 	else if (x < old_x)
+// 		cub->player->has_move += rotate_player(cub, -1);
+// 	else if (x > old_x)
+// 		cub->player->has_move += rotate_player(cub, 1);
+// 	old_x = x;
+// 	// mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
+// 	return (0);
+// }
 
 void	play_game(t_cub3d cub, t_vars *vars)
 {
@@ -97,5 +123,6 @@ void	play_game(t_cub3d cub, t_vars *vars)
 	cub.minimap = ft_calloc(1, sizeof(t_minimap));
 	if (!cub.minimap)
 		ft_err("Malloc error", vars);
+	mlx_mouse_hide(cub.ptr, cub.window);
 	main_loop(&cub);
 }
