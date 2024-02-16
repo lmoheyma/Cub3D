@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 16:25:05 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/15 18:49:53 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ void	play_game(t_cub3d cub, t_vars *vars)
 	if (!cub.param)
 		ft_err("Malloc error", vars);
 	cub.vars = vars;
+	cub.size = 64;
 	init_textures(&cub);
 	init_direction(&cub);
 	main_loop(&cub);

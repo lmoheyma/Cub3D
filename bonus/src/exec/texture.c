@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/15 18:05:45 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 02:02:45 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,12 @@
 
 void	init_texture_image(t_cub3d *cub, t_tmpimg *img, char *path)
 {
-	int	height;
-	int	width;
-
-	height = 0;
-	width = 0;
 	img->img = NULL;
 	img->addr = NULL;
 	img->bpp = 0;
 	img->sl = 0;
 	img->endian = 0;
-	img->img = mlx_xpm_file_to_image(cub->ptr, path, &width, &height);
+	img->img = mlx_xpm_file_to_image(cub->ptr, path, &cub->size, &cub->size);
 	if (!img->img)
 	{
 		ft_putendl_fd("Error", 1);
@@ -45,19 +40,20 @@ int	*convert(t_cub3d *cub, char *path)
 	y = 0;
 	img.img = NULL;
 	init_texture_image(cub, &img, path);
-	buffer = ft_calloc(1, sizeof(buffer) * SQUARE * SQUARE);
+	buffer = ft_calloc(1, sizeof(buffer) * cub->size * cub->size);
 	if (!buffer)
 		close_window(cub);
-	while (y < SQUARE)
+	while (y < cub->size)
 	{
 		x = 0;
-		while (x < SQUARE)
+		while (x < cub->size)
 		{
-			buffer[y * SQUARE + x] = img.addr[y * SQUARE + x];
+			buffer[y * cub->size + x] = img.addr[y * cub->size + x];
 			x++;
 		}
 		y++;
 	}
+	cub->size = 64;
 	mlx_destroy_image(cub->ptr, img.img);
 	return (buffer);
 }
@@ -67,7 +63,7 @@ void	init_textures(t_cub3d *cub)
 	t_assets	*assets;
 
 	assets = cub->vars->assets;
-	cub->param->textures = (int **)ft_calloc(6, sizeof(int *));
+	cub->param->textures = (int **)ft_calloc(7, sizeof(int *));
 	if (!cub->param->textures)
 		close_window(cub);
 	cub->param->textures[0] = convert(cub, cub->vars->assets->no_link);
@@ -75,6 +71,7 @@ void	init_textures(t_cub3d *cub)
 	cub->param->textures[2] = convert(cub, cub->vars->assets->ea_link);
 	cub->param->textures[3] = convert(cub, cub->vars->assets->we_link);
 	cub->param->textures[4] = convert(cub, "./assets/door.xpm");
+	cub->param->textures[5] = convert(cub, "./assets/barrel.xpm");
 	cub->param->c_color = rgb(ft_atoi(assets->c_link[0]),
 			ft_atoi(assets->c_link[1]), ft_atoi(assets->c_link[2]));
 	cub->param->f_color = rgb(ft_atoi(assets->f_link[0]),
@@ -106,19 +103,19 @@ void	update_textures(t_cub3d *cub, int x)
 	int	color;
 
 	set_directions(cub);
-	cub->param->x = (int)(cub->wall_x * SQUARE);
+	cub->param->x = (int)(cub->wall_x * cub->size);
 	if ((cub->side == 0 && cub->dir_x < 0) || (cub->side == 1
 			&& cub->dir_x > 0))
-		cub->param->x = SQUARE - cub->param->x - 1;
-	cub->param->step = 1.0 * SQUARE / cub->line_height;
+		cub->param->x = cub->size - cub->param->x - 1;
+	cub->param->step = 1.0 * cub->size / cub->line_height;
 	cub->param->pos = (cub->draw_start - HEIGHT / 2 + cub->line_height / 2)
 		* cub->param->step;
 	i = cub->draw_start;
 	while (i < cub->draw_end)
 	{
-		cub->param->y = (int)cub->param->pos & (SQUARE - 1);
+		cub->param->y = (int)cub->param->pos & (cub->size - 1);
 		cub->param->pos += cub->param->step;
-		color = cub->param->textures[cub->directions][SQUARE * cub->param->y
+		color = cub->param->textures[cub->directions][cub->size * cub->param->y
 			+ cub->param->x];
 		if (cub->directions == 0 || cub->directions == 2)
 			cub->param->color = (cub->param->color >> 1) & 8355711;
@@ -126,4 +123,5 @@ void	update_textures(t_cub3d *cub, int x)
 			cub->param->textures_p[i][x] = color;
 		i++;
 	}
+	cub->s_param->z_buffer[x] = cub->perp_wall_dist;
 }

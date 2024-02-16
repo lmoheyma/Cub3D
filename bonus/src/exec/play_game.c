@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/15 18:21:30 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 02:23:18 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,24 @@ int	close_window(t_cub3d *cub)
 	int	i;
 
 	i = 0;
-	while (i < 5)
-	{
-		free(cub->param->textures[i]);
-		i++;
-	}
+	while (i < 6)
+		free(cub->param->textures[i++]);
+	i = 0;
+	while (i < cub->param->nb_sprite)
+		free(cub->sprite[i++]);
 	free(cub->param->textures);
+	free(cub->sprite);
+	free(cub->s_param->z_buffer);
+	free(cub->s_param);
 	mlx_destroy_window(cub->ptr, cub->window);
-	mlx_destroy_image(cub->ptr, cub->xpm_void);
-	mlx_destroy_image(cub->ptr, cub->xpm_wall);
-	mlx_destroy_image(cub->ptr, cub->xpm_player);
-	mlx_destroy_image(cub->ptr, cub->xpm_mndoor);
+	if (cub->xpm_void)
+		mlx_destroy_image(cub->ptr, cub->xpm_void);
+	if (cub->xpm_wall)
+		mlx_destroy_image(cub->ptr, cub->xpm_wall);
+	if (cub->xpm_player)
+		mlx_destroy_image(cub->ptr, cub->xpm_player);
+	if (cub->xpm_mndoor)
+		mlx_destroy_image(cub->ptr, cub->xpm_mndoor);
 	mlx_destroy_display(cub->ptr);
 	free(cub->player);
 	free(cub->ptr);
@@ -77,7 +84,12 @@ void	play_game(t_cub3d cub, t_vars *vars)
 	if (!cub.param)
 		ft_err("Malloc error", vars);
 	cub.vars = vars;
+	cub.size = 64;
 	init_textures(&cub);
+	cub.s_param = ft_calloc(1, sizeof(t_sprite_param));
+	if (!cub.s_param)
+		ft_err("Malloc error", vars);
+	init_sprite(&cub);
 	init_direction(&cub);
 	cub.minimap = ft_calloc(1, sizeof(t_minimap));
 	if (!cub.minimap)

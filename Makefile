@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+         #
+#    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/15 11:23:18 by aleite-b         ###   ########.fr        #
+#    Updated: 2024/02/16 01:40:52 by lmoheyma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -67,6 +67,7 @@ BSOURCES = bonus/src/main.c \
 			bonus/src/exec/utils2.c \
 			bonus/src/exec/play_game.c \
 			bonus/src/minimap/minimap.c \
+			bonus/src/exec/sprite.c
 			
 OBJS_BASE = $(SOURCES:.c=.o)
 BOBJS_BASE = $(BSOURCES:.c=.o)

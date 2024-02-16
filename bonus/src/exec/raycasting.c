@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:10:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/15 13:58:40 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/16 02:32:18 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ int	raycasting(t_cub3d *cub)
 		dda2(cub);
 		line_height(cub);
 		update_textures(cub, x);
+		// display_sprite(cub);
 		x++;
 	}
 	return (0);
