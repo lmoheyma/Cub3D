@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 04:14:09 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 04:42:57 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	init_textures(t_cub3d *cub)
 			ft_atoi(assets->c_link[1]), ft_atoi(assets->c_link[2]));
 	cub->param->f_color = rgb(ft_atoi(assets->f_link[0]),
 			ft_atoi(assets->f_link[1]), ft_atoi(assets->f_link[2]));
-	cub->param->textures[6] = convert(cub, "./assets/sky1.xpm");
-	cub->param->textures[7] = convert(cub, "./assets/wall_1.xpm");
+	// cub->param->textures[6] = convert(cub, "./assets/sky1.xpm");
+	// cub->param->textures[7] = convert(cub, "./assets/wall_1.xpm");
 }
 
 void	init_textures_p(t_cub3d *cub)

@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/16 03:47:33 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 04:38:30 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,7 +236,7 @@ void				line_height(t_cub3d *cub);
 void				init_direction(t_cub3d *cub);
 
 // Floor & Ceiling
-void				floor_ceiling(t_cub3d *cub, int y);
+void				floor_ceiling(t_cub3d *cub);
 
 // Door
 void				door_check(t_cub3d *cub);
