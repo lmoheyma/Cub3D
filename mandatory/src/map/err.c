@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 13:11:58 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/14 15:47:04 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/17 21:37:56 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,28 @@ void	ft_free_map(char **map)
 	free(map);
 }
 
-void	free_assets(t_vars *vars)
+void	free_assets2(t_vars *vars)
 {
 	int	i;
 
 	i = 0;
+	if (vars->assets->f_link)
+	{
+		while (vars->assets->f_link[i])
+			free(vars->assets->f_link[i++]);
+		free(vars->assets->f_link);
+	}
+	i = 0;
+	if (vars->assets->c_link)
+	{
+		while (vars->assets->c_link[i])
+			free(vars->assets->c_link[i++]);
+		free(vars->assets->c_link);
+	}
+}
+
+void	free_assets(t_vars *vars)
+{
 	if (!vars->assets)
 		return ;
 	if (vars->assets->no_link)
@@ -63,14 +80,6 @@ void	free_assets(t_vars *vars)
 		free(vars->assets->we_link);
 	if (vars->assets->ea_link)
 		free(vars->assets->ea_link);
-	while (vars->assets->f_link[i])
-		free(vars->assets->f_link[i++]);
-	if (vars->assets->f_link)
-		free(vars->assets->f_link);
-	i = 0;
-	while (vars->assets->c_link[i])
-		free(vars->assets->c_link[i++]);
-	if (vars->assets->c_link)
-		free(vars->assets->c_link);
+	free_assets2(vars);
 	free(vars->assets);
 }

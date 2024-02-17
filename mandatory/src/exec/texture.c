@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/15 18:55:39 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 21:46:03 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,11 @@ void	init_texture_image(t_cub3d *cub, t_tmpimg *img, char *path)
 	img->endian = 0;
 	img->img = mlx_xpm_file_to_image(cub->ptr, path, &width, &height);
 	if (!img->img)
+	{
+		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Loading assets", 1);
 		close_window(cub);
+	}
 	img->addr = (int *)mlx_get_data_addr(img->img, &img->bpp, &img->sl,
 			&img->endian);
 }

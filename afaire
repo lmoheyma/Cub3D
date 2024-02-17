@@ -5,3 +5,6 @@ Valgrind :
 Leaks sur wrong color, ex : C   13,4975
 Seg fault si C ou F completement supprime
 Si texture vide, prend la texture du precedent ?
+
+Mandatory :
+check les couleurs au dessus de 255
