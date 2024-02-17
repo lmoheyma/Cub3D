@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 15:02:45 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:52:15 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ int	mouse_move_hook(int x, int y, t_cub3d *cub)
 		rotate_left(cub, speed);
 	cub->player->has_move += 1;
 	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
-	// display(cub);
 	return (0);
 }
 
@@ -115,9 +114,9 @@ void	play_game(t_cub3d cub, t_vars *vars)
 	cub.s_param = ft_calloc(1, sizeof(t_sprite_param));
 	if (!cub.s_param)
 		ft_err("Malloc error", vars);
-	cub.f_c = ft_calloc(1, sizeof(t_fc));
-	if (!cub.f_c)
-		ft_err("Malloc error", vars);
+	// cub.f_c = ft_calloc(1, sizeof(t_fc));
+	// if (!cub.f_c)
+	// 	ft_err("Malloc error", vars);
 	init_sprite(&cub);
 	init_direction(&cub);
 	cub.minimap = ft_calloc(1, sizeof(t_minimap));

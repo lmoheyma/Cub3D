@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 00:18:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 19:17:14 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 00:22:41 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,18 +22,20 @@ t_sprite	*add_sprite(t_cub3d *cub, double x, double y, int texture)
 	sprite->x = x;
 	sprite->y = y;
 	sprite->texture = texture;
+	sprite->collected = 0;
 	return (sprite);
 }
 
 void add_torchs(t_cub3d * cub)
 {
-	cub->sprite[5] = add_sprite(cub, 30, 1.1, 6);
-	cub->sprite[6] = add_sprite(cub, 30, 1.1, 7);
-	// cub->sprite[7] = add_sprite(cub, 30, 1.1, 6);
-	// cub->sprite[8] = add_sprite(cub, 30, 1.1, 6);
-	// cub->sprite[9] = add_sprite(cub, 30, 1.1, 6);
-	// cub->sprite[10] = add_sprite(cub, 30, 1.1, 6);
-	// cub->sprite[11] = add_sprite(cub, 30, 1.1, 6);
+	cub->sprite[5] = add_sprite(cub, 20.5, 2.1, 6);
+	cub->sprite[6] = add_sprite(cub, 20.5, 2.1, 7);
+	cub->sprite[7] = add_sprite(cub, 30, 1.1, 8);
+	cub->sprite[8] = add_sprite(cub, 30, 1.1, 9);
+	cub->sprite[9] = add_sprite(cub, 30, 1.1, 10);
+	cub->sprite[10] = add_sprite(cub, 30, 1.1, 11);
+	cub->sprite[11] = add_sprite(cub, 30, 1.1, 12);
+	cub->sprite[12] = add_sprite(cub, 30, 1.1, 13);
 }
 
 void add_collectibles(t_cub3d *cub)
@@ -47,7 +49,8 @@ void add_collectibles(t_cub3d *cub)
 
 void	init_sprite(t_cub3d *cub)
 {
-	cub->param->nb_sprite = 12;
+	cub->collected_keys = 0;
+	cub->param->nb_sprite = 13;
 	cub->sprite = (t_sprite **)ft_calloc(cub->param->nb_sprite + 1,
 			sizeof(t_sprite *));
 	if (!cub->sprite)
@@ -56,8 +59,7 @@ void	init_sprite(t_cub3d *cub)
 	if (!cub->s_param->z_buffer)
 		close_window(cub);
 	add_collectibles(cub);
-	// cub->sprite[5] = add_sprite(cub, 30, 1.1, 6);
-	add_torchs(cub);
+	// add_torchs(cub);
 }
 
 void sprite_data(t_cub3d *cub, int i)
@@ -127,6 +129,8 @@ void	display_sprite(t_cub3d *cub, int index)
 	int	stripe;
 	t_sprite_param *s_p;
 
+	if (cub->sprite[index]->collected == 1)
+		return ;
 	s_p = cub->s_param;
 	sprite_data(cub, index);
 	data_draw_sprite(cub);

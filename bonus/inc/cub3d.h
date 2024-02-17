@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/16 19:13:36 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/16 23:49:33 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -145,6 +145,7 @@ typedef struct s_sprite
 	double				x;
 	double				y;
 	int				texture;
+	int				collected;
 }					t_sprite;
 
 typedef struct s_sprite_param
@@ -204,6 +205,7 @@ typedef struct s_cub3d
 	void			*xpm_mndoor;
 	void			*xpm_player;
 	int				size;
+	int				collected_keys;
 	t_data			*data;
 	t_player		*player;
 	t_vars			*vars;
@@ -218,6 +220,7 @@ typedef struct s_cub3d
 // Sprites
 void				init_sprite(t_cub3d *cub);
 void				display_sprite(t_cub3d *cub, int index);
+void 				check_sprite(t_cub3d *cub);
 
 // Minimap
 void				fshow_minimap(t_cub3d *cub);
