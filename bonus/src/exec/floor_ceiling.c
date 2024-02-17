@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 03:18:36 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 04:39:06 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:00:43 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,10 @@ void	fill_buffer(t_cub3d *cub, int y)
 		cub->f_c->t_y = (int)(SQUARE * (cub->f_c->floor_y - cub->f_c->cell_y)) & (SQUARE - 1);
 		cub->f_c->floor_x += cub->f_c->floor_step_x;
 		cub->f_c->floor_y += cub->f_c->floor_step_y;
-		color = cub->param->textures[7][SQUARE * cub->f_c->t_y + cub->f_c->t_x];
+		color = cub->param->textures[0][SQUARE * cub->f_c->t_y + cub->f_c->t_x];
 		color = (color >> 1) & 8355711;
 		cub->param->textures_p[y][x] = color;
-		color = cub->param->textures[6][SQUARE * cub->f_c->t_y + cub->f_c->t_x];
+		color = cub->param->textures[14][SQUARE * cub->f_c->t_y + cub->f_c->t_x];
 		color = (color >> 1) & 8355711;
 		cub->param->textures_p[HEIGHT - y - 1][x] = color;
 		x++;

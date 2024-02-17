@@ -6,7 +6,7 @@
 #    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/16 23:09:51 by lmoheyma         ###   ########.fr        #
+#    Updated: 2024/02/17 19:44:09 by lmoheyma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -65,6 +65,7 @@ BSOURCES = bonus/src/main.c \
 			bonus/src/exec/color_utils.c \
 			bonus/src/exec/utils.c \
 			bonus/src/exec/utils2.c \
+			bonus/src/exec/utils3.c \
 			bonus/src/exec/play_game.c \
 			bonus/src/minimap/minimap.c \
 			bonus/src/exec/sprite.c \
@@ -84,8 +85,8 @@ all: obj $(NAME)
 obj:
 	mkdir -p obj
 	mkdir -p obj/mandatory/src
-	mkdir -p obj/mandatory/src/exec
 	mkdir -p obj/mandatory/src/map
+	mkdir -p obj/mandatory/src/exec
 	mkdir -p obj/mandatory/src/minimap
 bobj:
 	mkdir -p obj

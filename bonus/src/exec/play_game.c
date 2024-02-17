@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 23:52:15 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:12:33 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,18 @@ int	close_window(t_cub3d *cub)
 
 	i = 0;
 	while (i < 6)
-		free(cub->param->textures[i++]);
+	{
+		if (cub->param->textures[i])
+			free(cub->param->textures[i]);
+		i++;
+	}
 	i = 0;
 	while (i < cub->param->nb_sprite)
-		free(cub->sprite[i++]);
+	{
+		if (cub->sprite[i])
+			free(cub->sprite[i]);
+		i++;
+	}
 	free(cub->param->textures);
 	free(cub->sprite);
 	free(cub->s_param->z_buffer);
@@ -45,56 +53,58 @@ int	close_window(t_cub3d *cub)
 	exit(0);
 }
 
+// int	mouse_move_hook(int x, int y, t_cub3d *cub)
+// {
+// 	int		old_x;
+// 	double	speed;
+
+// 	old_x = WIDTH / 2;
+// 	mlx_mouse_get_pos(cub->ptr, cub->window, &x, &y);
+// 	if (x == old_x)
+// 		return (0);
+// 	if (abs(x - old_x) < 20)
+// 		return (0);
+// 	speed = 0;
+// 	if (x < old_x)
+// 		speed = -0.1;
+// 	else if (x > old_x)
+// 		speed = 0.1;
+// 	if (speed < 0)
+// 		rotate_right(cub, speed);
+// 	if (speed > 0)
+// 		rotate_left(cub, speed);
+// 	cub->player->has_move += 1;
+// 	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
+// 	return (0);
+// }
+
 int	mouse_move_hook(int x, int y, t_cub3d *cub)
 {
-	int		old_x;
-	double	speed;
-
-	old_x = WIDTH / 2;
-	mlx_mouse_get_pos(cub->ptr, cub->window, &x, &y);
+	static int		old_x = WIDTH / 2;
+	(void)y;
+	
+	// if (x > WIDTH - 20)
+	// {
+	// 	x = 20;
+	// 	mlx_mouse_move(cub->ptr, cub->window, x, y);
+	// }
+	// if (x < 20)
+	// {
+	// 	x = WIDTH - 20;
+	// 	mlx_mouse_move(cub->ptr, cub->window, x, y);
+	// }
 	if (x == old_x)
+	{
 		return (0);
-	if (abs(x - old_x) < 20)
-		return (0);
-	speed = 0;
-	if (x < old_x)
-		speed = -0.1;
+	}
+	else if (x < old_x)
+		cub->player->has_move += rotate_mouse_player(cub, -1);
 	else if (x > old_x)
-		speed = 0.1;
-	if (speed < 0)
-		rotate_right(cub, speed);
-	if (speed > 0)
-		rotate_left(cub, speed);
-	cub->player->has_move += 1;
+		cub->player->has_move += rotate_mouse_player(cub, 1);
+	// old_x = x;
 	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
-
-// int	mouse_move_hook(int x, int y, t_cub3d *cub)
-// {
-// 	static int		old_x = WIDTH / 2;
-// 	(void)y;
-	
-// 	if (x > WIDTH - 20)
-// 	{
-// 		x = 20;
-// 		mlx_mouse_move(cub->ptr, cub->window, x, y);
-// 	}
-// 	if (x < 20)
-// 	{
-// 		x = WIDTH - 20;
-// 		mlx_mouse_move(cub->ptr, cub->window, x, y);
-// 	}
-// 	if (x == old_x)
-// 		return (0);
-// 	else if (x < old_x)
-// 		cub->player->has_move += rotate_player(cub, -1);
-// 	else if (x > old_x)
-// 		cub->player->has_move += rotate_player(cub, 1);
-// 	old_x = x;
-// 	// mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
-// 	return (0);
-// }
 
 void	play_game(t_cub3d cub, t_vars *vars)
 {
@@ -108,20 +118,26 @@ void	play_game(t_cub3d cub, t_vars *vars)
 	cub.param = ft_calloc(1, sizeof(t_textures));
 	if (!cub.param)
 		ft_err("Malloc error", vars);
-	cub.vars = vars;
-	cub.size = 64;
-	init_textures(&cub);
 	cub.s_param = ft_calloc(1, sizeof(t_sprite_param));
 	if (!cub.s_param)
 		ft_err("Malloc error", vars);
-	// cub.f_c = ft_calloc(1, sizeof(t_fc));
-	// if (!cub.f_c)
-	// 	ft_err("Malloc error", vars);
-	init_sprite(&cub);
-	init_direction(&cub);
 	cub.minimap = ft_calloc(1, sizeof(t_minimap));
 	if (!cub.minimap)
 		ft_err("Malloc error", vars);
+	cub.vars = vars;
+	cub.size = 64;
+	cub.param->nb_sprite = 13;
+	cub.sprite = (t_sprite **)ft_calloc(cub.param->nb_sprite + 1,
+			sizeof(t_sprite *));
+	if (!cub.sprite)
+		ft_err("Malloc error", vars);
+	init_sprite(&cub);
+	init_images(&cub);
+	init_textures(&cub);
+	// cub.f_c = ft_calloc(1, sizeof(t_fc));
+	// if (!cub.f_c)
+	// 	ft_err("Malloc error", vars);
+	init_direction(&cub);
 	mlx_mouse_hide(cub.ptr, cub.window);
 	main_loop(&cub);
 }

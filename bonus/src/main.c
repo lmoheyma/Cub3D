@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/11 14:15:03 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/14 15:46:20 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:44:43 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ int	main(int argc, char **argv)
 	cub.ptr = mlx_init();
 	if (!cub.ptr)
 		ft_err("Malloc error", vars);
-	mlx_do_sync(cub.ptr);
 	cub.window = mlx_new_window(cub.ptr, WIDTH, HEIGHT, "Cub3D");
 	if (!cub.window)
 		ft_err("Malloc error", vars);

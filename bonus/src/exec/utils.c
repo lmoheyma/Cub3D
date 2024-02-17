@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/17 02:04:23 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:35:44 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,7 +68,8 @@ int	display(t_cub3d *cub)
 	cub->player->has_move += move_player(cub);
 	init_textures_p(cub);
 	raycasting(cub);
-	check_sprite(cub);
+	// anim_sprite(cub);
+	// check_sprite(cub);
 	create_frame(cub);
 	show_minimap(cub);
 	i = 0;
@@ -79,18 +80,18 @@ int	display(t_cub3d *cub)
 	}
 	free(cub->param->textures_p);
 	usleep(100);
-	printf("nb keys : %d\n", cub->collected_keys);
+	// printf("nb keys : %d\n", cub->collected_keys);
 	return (0);
 }
 
 void	main_loop(t_cub3d *cub)
 {
 	int	i;
-
+	
+	setup_images(cub);
 	init_textures_p(cub);
 	raycasting(cub);
 	create_frame(cub);
-	setup_images(cub);
 	show_minimap(cub);
 	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
 	listen_input(cub);

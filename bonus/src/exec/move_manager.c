@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 16:23:05 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 14:56:33 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:38:56 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,5 +39,17 @@ int	rotate_player(t_cub3d *cub, int rotate)
 		move = rotate_right(cub, 0.05);
 	else
 		move = rotate_left(cub, -0.05);
+	return (move);
+}
+
+int	rotate_mouse_player(t_cub3d *cub, int rotate)
+{
+	int	move;
+	
+	move = 0;
+	if (rotate == 1)
+		move = rotate_right(cub, 0.016);
+	else
+		move = rotate_left(cub, -0.016);
 	return (move);
 }

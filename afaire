@@ -1,10 +1,7 @@
 leak check valgrind
-texture width height
-sprites
-texture inverse qd on change de direction
+animer des sprites
 
 Valgrind :
-Conditional jumps avec assets invalid ou entierrement vide
-Leaks sur wrong color
-Seg fault si C ou F vide
-Si texture vide, prend la texture du precedent
+Leaks sur wrong color, ex : C   13,4975
+Seg fault si C ou F completement supprime
+Si texture vide, prend la texture du precedent ?

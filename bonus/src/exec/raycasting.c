@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 22:10:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/16 19:13:15 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 16:00:00 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ int	raycasting(t_cub3d *cub)
 	int	x;
 
 	x = 0;
-	// floor_ceiling(cub);
 	while (x < WIDTH)
 	{
 		init_raycast(cub, x);

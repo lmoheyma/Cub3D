@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:56:48 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 17:06:46 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:39:22 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,15 +34,27 @@ void	setup_images(t_cub3d *cub)
 	cub->xpm_void = mlx_xpm_file_to_image(cub->ptr, "./assets/map_void10.xpm",
 			&w, &h);
 	if (!cub->xpm_void)
-		img_error(cub);
+	{
+		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Loading assets", 1);
+		close_window(cub);
+	}
 	cub->xpm_wall = mlx_xpm_file_to_image(cub->ptr, "./assets/map_wall10.xpm",
 			&w, &h);
 	if (!cub->xpm_wall)
-		img_error(cub);
+	{
+		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Loading assets", 1);
+		close_window(cub);
+	}
 	cub->xpm_mndoor = mlx_xpm_file_to_image(cub->ptr, "./assets/door10.xpm", &w,
 			&h);
 	if (!cub->xpm_mndoor)
-		img_error(cub);
+	{
+		ft_putendl_fd("Error", 1);
+		ft_putendl_fd("Loading assets", 1);
+		close_window(cub);
+	}
 	cub->xpm_player = mlx_xpm_file_to_image(cub->ptr,
 			"./assets/red_player10.xpm", &w, &h);
 	if (!cub->xpm_player)

@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/16 23:49:33 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:00:02 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # include <math.h>
 # include <stdlib.h>
 # include <unistd.h>
+# include <pthread.h>
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -221,6 +222,7 @@ typedef struct s_cub3d
 void				init_sprite(t_cub3d *cub);
 void				display_sprite(t_cub3d *cub, int index);
 void 				check_sprite(t_cub3d *cub);
+void 				anim_sprite(t_cub3d *cub);
 
 // Minimap
 void				fshow_minimap(t_cub3d *cub);
@@ -259,6 +261,7 @@ int					rotate_right(t_cub3d *cub, double speed);
 int					rotate_left(t_cub3d *cub, double speed);
 int					rotate_player(t_cub3d *cub, int rotate);
 void				mouse_rotate(t_cub3d *cub, double speed);
+int					rotate_mouse_player(t_cub3d *cub, int rotate);
 
 // Movements WASD
 int					move_back(t_cub3d *cub);
@@ -279,11 +282,13 @@ int					key_hook(int keycode, t_cub3d *cub);
 int					close_window(t_cub3d *cub);
 void				create_frame(t_cub3d *cub);
 int					display(t_cub3d *cub);
+void				img_error(t_cub3d *cub);
 
 // Init
 t_data				*init_data(t_vars *vars);
 void				init_player(t_cub3d cub, t_vars *vars);
 void				main_loop(t_cub3d *cub);
+void 				init_images(t_cub3d *cub);
 
 // XPM
 void				path_to_xpm(t_cub3d *cub);

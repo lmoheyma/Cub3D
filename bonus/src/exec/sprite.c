@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 00:18:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/17 00:22:41 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/17 19:11:52 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,8 @@ t_sprite	*add_sprite(t_cub3d *cub, double x, double y, int texture)
 
 void add_torchs(t_cub3d * cub)
 {
-	cub->sprite[5] = add_sprite(cub, 20.5, 2.1, 6);
-	cub->sprite[6] = add_sprite(cub, 20.5, 2.1, 7);
+	cub->sprite[5] = add_sprite(cub, 20.02, 2.1, 6);
+	cub->sprite[6] = add_sprite(cub, 20.02, 2.1, 7);
 	cub->sprite[7] = add_sprite(cub, 30, 1.1, 8);
 	cub->sprite[8] = add_sprite(cub, 30, 1.1, 9);
 	cub->sprite[9] = add_sprite(cub, 30, 1.1, 10);
@@ -50,16 +50,11 @@ void add_collectibles(t_cub3d *cub)
 void	init_sprite(t_cub3d *cub)
 {
 	cub->collected_keys = 0;
-	cub->param->nb_sprite = 13;
-	cub->sprite = (t_sprite **)ft_calloc(cub->param->nb_sprite + 1,
-			sizeof(t_sprite *));
-	if (!cub->sprite)
-		close_window(cub);
 	cub->s_param->z_buffer = (double *)ft_calloc(WIDTH, sizeof(double));
 	if (!cub->s_param->z_buffer)
 		close_window(cub);
 	add_collectibles(cub);
-	// add_torchs(cub);
+	add_torchs(cub);
 }
 
 void sprite_data(t_cub3d *cub, int i)
