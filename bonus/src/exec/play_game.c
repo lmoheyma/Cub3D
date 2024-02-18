@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/17 19:12:33 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:10:00 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,7 +126,8 @@ void	play_game(t_cub3d cub, t_vars *vars)
 		ft_err("Malloc error", vars);
 	cub.vars = vars;
 	cub.size = 64;
-	cub.param->nb_sprite = 13;
+	init_animation(&cub);
+	cub.param->nb_sprite = 23;
 	cub.sprite = (t_sprite **)ft_calloc(cub.param->nb_sprite + 1,
 			sizeof(t_sprite *));
 	if (!cub.sprite)

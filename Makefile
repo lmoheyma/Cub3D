@@ -6,7 +6,7 @@
 #    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/17 19:44:09 by lmoheyma         ###   ########.fr        #
+#    Updated: 2024/02/18 23:10:24 by lmoheyma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -70,7 +70,8 @@ BSOURCES = bonus/src/main.c \
 			bonus/src/minimap/minimap.c \
 			bonus/src/exec/sprite.c \
 			bonus/src/exec/floor_ceiling.c \
-			bonus/src/exec/display_sprite.c
+			bonus/src/exec/animation_sprite.c \
+			bonus/src/exec/add_sprites.c
 			
 OBJS_BASE = $(SOURCES:.c=.o)
 BOBJS_BASE = $(BSOURCES:.c=.o)

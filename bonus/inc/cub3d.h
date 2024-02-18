@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/17 19:00:02 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/18 22:51:54 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -207,6 +207,10 @@ typedef struct s_cub3d
 	void			*xpm_player;
 	int				size;
 	int				collected_keys;
+	int				frame_rate;
+	int				animation_speed;
+	int				frame_count;
+	int				current_frame;
 	t_data			*data;
 	t_player		*player;
 	t_vars			*vars;
@@ -219,10 +223,15 @@ typedef struct s_cub3d
 }					t_cub3d;
 
 // Sprites
+t_sprite			*add_sprite(t_cub3d *cub, double x, double y, int texture);
 void				init_sprite(t_cub3d *cub);
 void				display_sprite(t_cub3d *cub, int index);
-void 				check_sprite(t_cub3d *cub);
-void 				anim_sprite(t_cub3d *cub);
+void 				show_sprite(t_cub3d *cub);
+void				init_animation(t_cub3d *cub);
+void 				update_animation(t_cub3d *cub);
+void 				update_animation1(t_cub3d *cub);
+void 				update_frame(t_cub3d *cub);
+void 				add_torchs1(t_cub3d * cub, double x, double y, int start, int end);
 
 // Minimap
 void				fshow_minimap(t_cub3d *cub);
