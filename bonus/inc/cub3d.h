@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/18 22:51:54 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:10:47 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,9 +229,9 @@ void				display_sprite(t_cub3d *cub, int index);
 void 				show_sprite(t_cub3d *cub);
 void				init_animation(t_cub3d *cub);
 void 				update_animation(t_cub3d *cub);
-void 				update_animation1(t_cub3d *cub);
 void 				update_frame(t_cub3d *cub);
 void 				add_torchs1(t_cub3d * cub, double x, double y, int start, int end);
+void 				display_barrel(t_cub3d *cub);
 
 // Minimap
 void				fshow_minimap(t_cub3d *cub);

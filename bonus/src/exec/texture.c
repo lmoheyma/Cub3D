@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/18 21:07:52 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:08:39 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,7 @@ void	init_textures(t_cub3d *cub)
 	cub->param->textures[2] = convert(cub, cub->vars->assets->ea_link);
 	cub->param->textures[3] = convert(cub, cub->vars->assets->we_link);
 	cub->param->textures[4] = convert(cub, "./assets/door2.xpm");
-	cub->param->textures[5] = convert(cub, "./assets/key.xpm");
+	cub->param->textures[5] = convert(cub, "./assets/barrel.xpm");
 	cub->param->c_color = rgb(ft_atoi(assets->c_link[0]),
 			ft_atoi(assets->c_link[1]), ft_atoi(assets->c_link[2]));
 	cub->param->f_color = rgb(ft_atoi(assets->f_link[0]),

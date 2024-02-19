@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/18 23:04:28 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:17:17 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,9 @@ int	display(t_cub3d *cub)
 	cub->player->has_move += move_player(cub);
 	init_textures_p(cub);
 	raycasting(cub);
-	// display_sprite(cub, 6);
 	update_frame(cub);
 	update_animation(cub);
-	// update_animation1(cub);
+	display_barrel(cub);
 	create_frame(cub);
 	show_minimap(cub);
 	i = 0;
@@ -81,8 +80,8 @@ int	display(t_cub3d *cub)
 		i++;
 	}
 	free(cub->param->textures_p);
-	// usleep(100);
-	// printf("nb keys : %d\n", cub->collected_keys);
+	usleep(150);
+	// printf("x : %f   y : %f\n", cub->player->p_x, cub->player->p_y);
 	return (0);
 }
 
