@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/18 22:10:00 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:20:34 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	close_window(t_cub3d *cub)
 	int	i;
 
 	i = 0;
-	while (i < 6)
+	while (i < 15)
 	{
 		if (cub->param->textures[i])
 			free(cub->param->textures[i]);
