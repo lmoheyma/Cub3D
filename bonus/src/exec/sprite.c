@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 00:18:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 01:16:19 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:24:05 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,9 +30,9 @@ void add_collectibles(t_cub3d *cub)
 {
 	cub->sprite[0] = add_sprite(cub, 25.7, 4.8, 5);
 	cub->sprite[1] = add_sprite(cub, 20.3, 1.3, 5);
-	cub->sprite[2] = add_sprite(cub, 17.5, 1.5, 5);
-	cub->sprite[3] = add_sprite(cub, 4.5, 12.5, 5);
-	cub->sprite[4] = add_sprite(cub, 12.5, 12.5, 5);
+	cub->sprite[2] = add_sprite(cub, 16.7, 5.7, 5);
+	cub->sprite[3] = add_sprite(cub, 12.3, 5.7, 5);
+	cub->sprite[4] = add_sprite(cub, 15.7, 10.7, 5);
 }
 
 void	init_sprite(t_cub3d *cub)

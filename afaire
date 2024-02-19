@@ -1,5 +1,4 @@
 leak check valgrind
-animer des sprites
 
 Valgrind :
 Leaks sur wrong color, ex : C   13,4975

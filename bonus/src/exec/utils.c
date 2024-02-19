@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 01:21:11 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 01:25:30 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int	display(t_cub3d *cub)
 	}
 	free(cub->param->textures_p);
 	usleep(150);
-	printf("x : %f   y : %f\n", cub->player->p_x, cub->player->p_y);
+	// printf("x : %f   y : %f\n", cub->player->p_x, cub->player->p_y);
 	return (0);
 }
 
