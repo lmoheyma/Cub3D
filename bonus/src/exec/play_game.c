@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 10:01:38 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:33:00 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,44 @@ int	mouse_move_hook(int x, int y, t_cub3d *cub)
 	mlx_mouse_move(cub->ptr, cub->window, WIDTH / 2, HEIGHT / 2);
 	return (0);
 }
+
+// void	play_game2(t_cub3d *cub, t_vars *vars)
+// {
+// 	(void)cub;
+// 	(void)vars;
+// }
+
+// void	play_game(t_cub3d cub, t_vars *vars)
+// {
+// 	cub.player = ft_calloc(1, sizeof(t_player));
+// 	if (!cub.player)
+// 		ft_err("Malloc error", vars);
+// 	init_game(vars, &cub);
+// 	cub.data = init_data(vars);
+// 	cub.param = ft_calloc(1, sizeof(t_textures));
+// 	cub.s_param = ft_calloc(1, sizeof(t_sprite_param));
+// 	cub.minimap = ft_calloc(1, sizeof(t_minimap));
+// 	if (!cub.minimap || !cub.s_param || !cub.param || !cub.data)
+// 		ft_err("Malloc error", vars);
+// 	cub.vars = vars;
+// 	cub.size = 64;
+// 	init_animation(&cub);
+// 	cub.param->nb_sprite = 23;
+// 	cub.sprite = (t_sprite **)ft_calloc(cub.param->nb_sprite + 1,
+// 			sizeof(t_sprite *));
+// 	if (!cub.sprite)
+// 		ft_err("Malloc error", vars);
+// 	init_sprite(&cub);
+// 	init_images(&cub);
+// 	init_textures(&cub);
+// 	// play_game2(&cub, vars);
+// 	// cub.f_c = ft_calloc(1, sizeof(t_fc));
+// 	// if (!cub.f_c)
+// 	// 	ft_err("Malloc error", vars);
+// 	init_direction(&cub);
+// 	mlx_mouse_hide(cub.ptr, cub.window);
+// 	main_loop(&cub);
+// }
 
 void	play_game(t_cub3d cub, t_vars *vars)
 {

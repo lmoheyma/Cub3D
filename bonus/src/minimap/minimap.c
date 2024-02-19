@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/09 21:56:48 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 09:59:28 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:13:11 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	setup_images(t_cub3d *cub)
 	int	h;
 	int	w;
 
-	cub->xpm_void = mlx_xpm_file_to_image(cub->ptr, "./assets/map_void1gfhhf0.xpm",
+	cub->xpm_void = mlx_xpm_file_to_image(cub->ptr, "./assets/map_void10.xpm",
 			&w, &h);
 	if (!cub->xpm_void)
 		img_error(cub);

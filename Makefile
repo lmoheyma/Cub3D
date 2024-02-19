@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
+#    By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/18 23:10:24 by lmoheyma         ###   ########.fr        #
+#    Updated: 2024/02/19 10:47:53 by aleite-b         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -81,16 +81,19 @@ BOBJS = $(addprefix obj/,$(BOBJS_BASE))
 
 NAME = cub3d
 
-all: obj $(NAME)
+all: obj mobj $(NAME)
 
 obj:
 	mkdir -p obj
+
+mobj:
+	mkdir -p obj/mandatory
 	mkdir -p obj/mandatory/src
 	mkdir -p obj/mandatory/src/map
 	mkdir -p obj/mandatory/src/exec
 	mkdir -p obj/mandatory/src/minimap
 bobj:
-	mkdir -p obj
+	mkdir -p obj/bonus
 	mkdir -p obj/bonus/src
 	mkdir -p obj/bonus/src/exec
 	mkdir -p obj/bonus/src/map
@@ -104,7 +107,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INCLUDE) $(MLX) -o $(NAME) $(OBJS) $(LIB)
 	@echo "\n\033[0mDone !"
 
-bonus: bobj $(BOBJS) 
+bonus: obj bobj $(BOBJS) 
 	@echo "\n"
 	make -C libft/
 	make -C mlx/

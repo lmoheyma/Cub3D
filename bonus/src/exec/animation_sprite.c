@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 23:08:58 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 10:01:50 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:36:29 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,24 +30,9 @@ void	update_frame(t_cub3d *cub)
 	}
 }
 
-void	update_animation(t_cub3d *cub)
+void	update_animation2(t_cub3d *cub)
 {
-	if (cub->current_frame == 0)
-	{
-		display_sprite(cub, 6);
-		display_sprite(cub, 14);
-	}
-	else if (cub->current_frame == 1)
-	{
-		display_sprite(cub, 7);
-		display_sprite(cub, 15);
-	}
-	else if (cub->current_frame == 2)
-	{
-		display_sprite(cub, 8);
-		display_sprite(cub, 16);
-	}
-	else if (cub->current_frame == 3)
+	if (cub->current_frame == 3)
 	{
 		display_sprite(cub, 9);
 		display_sprite(cub, 17);
@@ -67,6 +52,26 @@ void	update_animation(t_cub3d *cub)
 		display_sprite(cub, 12);
 		display_sprite(cub, 20);
 	}
+}
+
+void	update_animation(t_cub3d *cub)
+{
+	if (cub->current_frame == 0)
+	{
+		display_sprite(cub, 6);
+		display_sprite(cub, 14);
+	}
+	else if (cub->current_frame == 1)
+	{
+		display_sprite(cub, 7);
+		display_sprite(cub, 15);
+	}
+	else if (cub->current_frame == 2)
+	{
+		display_sprite(cub, 8);
+		display_sprite(cub, 16);
+	}
+	update_animation2(cub);
 }
 
 void	display_barrel(t_cub3d *cub)

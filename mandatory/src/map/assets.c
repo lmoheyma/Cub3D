@@ -6,37 +6,11 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 09:54:33 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 09:08:16 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:39:06 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-void	base_assets(t_vars *vars)
-{
-	if (!vars->assets->no_link)
-		vars->assets->no_link = ft_strdup("./assets/eagle.xpm");
-	if (!vars->assets->so_link)
-		vars->assets->so_link = ft_strdup("./assets/greystone.xpm");
-	if (!vars->assets->we_link)
-		vars->assets->we_link = ft_strdup("./assets/purplestone.xpm");
-	if (!vars->assets->ea_link)
-		vars->assets->ea_link = ft_strdup("./assets/red.xpm");
-	if (!vars->assets->f_link)
-	{
-		vars->assets->f_link[0] = "200";
-		vars->assets->f_link[1] = "200";
-		vars->assets->f_link[2] = "200";
-		vars->assets->f_link[3] = NULL;
-	}
-	if (!vars->assets->c_link)
-	{
-		vars->assets->c_link[0] = "200";
-		vars->assets->c_link[1] = "200";
-		vars->assets->c_link[2] = "200";
-		vars->assets->c_link[3] = NULL;
-	}
-}
 
 void	update_link(char **old_link, char *new_link, t_vars *vars,
 		char **lines_of_files)

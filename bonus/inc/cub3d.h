@@ -6,7 +6,7 @@
 /*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 08:57:18 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:14:38 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -264,6 +264,7 @@ int					rgb(int r, int g, int b);
 void				init_textures(t_cub3d *cub);
 void				init_textures_p(t_cub3d *cub);
 void				set_directions(t_cub3d *cub);
+int					*convert(t_cub3d *cub, char *path);
 void				update_textures(t_cub3d *cub, int x);
 
 // Rotate camera
@@ -293,6 +294,7 @@ int					close_window(t_cub3d *cub);
 void				create_frame(t_cub3d *cub);
 int					display(t_cub3d *cub);
 void				img_error(t_cub3d *cub);
+void				add_torchs_textures(t_cub3d *cub);
 
 // Init
 t_data				*init_data(t_vars *vars);

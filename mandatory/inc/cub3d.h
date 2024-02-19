@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/15 18:48:59 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:49:06 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -236,6 +236,8 @@ char			*put_link_of_asset(char *asset_case, char *s, t_vars *vars,
 void			init_assets(t_vars *vars, void *ptr);
 void			update_color_link(char ***old_link, char *new_link,
 					t_vars *vars, char **lines_of_files);
+char			**check_colors(char *s, t_vars *vars, char **lines_of_files,
+					char *new_link);
 
 // FILE
 
