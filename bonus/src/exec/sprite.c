@@ -3,48 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   sprite.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 00:18:38 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 08:48:13 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:58:42 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-t_sprite	*add_sprite(t_cub3d *cub, double x, double y, int texture)
-{
-	t_sprite	*sprite;
-
-	sprite = (t_sprite *)ft_calloc(1, sizeof(t_sprite));
-	if (!sprite)
-		close_window(cub);
-	sprite->x = x;
-	sprite->y = y;
-	sprite->texture = texture;
-	sprite->collected = 0;
-	return (sprite);
-}
-
-void	add_collectibles(t_cub3d *cub)
-{
-	cub->sprite[0] = add_sprite(cub, 25.7, 4.8, 5);
-	cub->sprite[1] = add_sprite(cub, 20.3, 1.3, 5);
-	cub->sprite[2] = add_sprite(cub, 16.7, 5.7, 5);
-	cub->sprite[3] = add_sprite(cub, 12.3, 5.7, 5);
-	cub->sprite[4] = add_sprite(cub, 15.7, 10.7, 5);
-}
-
-void	init_sprite(t_cub3d *cub)
-{
-	cub->collected_keys = 0;
-	cub->s_param->z_buffer = (double *)ft_calloc(WIDTH, sizeof(double));
-	if (!cub->s_param->z_buffer)
-		close_window(cub);
-	add_collectibles(cub);
-	add_torchs1(cub, 20.02, 2.7, 5, 13);
-	add_torchs1(cub, 20.02, 4.3, 13, 21);
-}
 
 void	sprite_data(t_cub3d *cub, int i)
 {
@@ -84,6 +50,19 @@ void	data_draw_sprite(t_cub3d *cub)
 		s_p->draw_end_x = WIDTH - 1;
 }
 
+int	choose_color(t_cub3d *cub, int i, int y, int stripe)
+{
+	int				color;
+	t_sprite_param	*s_p;
+
+	s_p = cub->s_param;
+	color = cub->param->textures[cub->sprite[i]->texture][SQUARE
+		* s_p->texture_y + s_p->texture_x];
+	if ((color & 0x00FFFFFF) != 0)
+		cub->param->textures_p[y][stripe] = color;
+	return (color);
+}
+
 void	draw_sprite(t_cub3d *cub, int stripe, int i)
 {
 	int				color;
@@ -105,10 +84,7 @@ void	draw_sprite(t_cub3d *cub, int stripe, int i)
 			{
 				d = y * 256 - HEIGHT * 128 + s_p->sprite_height * 128;
 				s_p->texture_y = ((d * SQUARE) / s_p->sprite_height) / 256;
-				color = cub->param->textures[cub->sprite[i]->texture][SQUARE
-					* s_p->texture_y + s_p->texture_x];
-				if ((color & 0x00FFFFFF) != 0)
-					cub->param->textures_p[y][stripe] = color;
+				color = choose_color(cub, i, y, stripe);
 				y++;
 			}
 		}

@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/17 21:46:03 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:02:44 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,14 @@ void	update_textures(t_cub3d *cub, int x)
 
 	set_directions(cub);
 	cub->param->x = (int)(cub->wall_x * SQUARE);
-	if ((cub->side == 0 && cub->dirX < 0) || (cub->side == 1 && cub->dirX > 0))
+	if ((cub->side == 0 && cub->dir_x < 0) || (cub->side == 1
+			&& cub->dir_x > 0))
 		cub->param->x = SQUARE - cub->param->x - 1;
-	cub->param->step = 1.0 * SQUARE / cub->lineHeight;
-	cub->param->pos = (cub->drawStart - HEIGHT / 2 + cub->lineHeight / 2)
+	cub->param->step = 1.0 * SQUARE / cub->line_height;
+	cub->param->pos = (cub->draw_start - HEIGHT / 2 + cub->line_height / 2)
 		* cub->param->step;
-	i = cub->drawStart;
-	while (i < cub->drawEnd)
+	i = cub->draw_start;
+	while (i < cub->draw_end)
 	{
 		cub->param->y = (int)cub->param->pos & (SQUARE - 1);
 		cub->param->pos += cub->param->step;

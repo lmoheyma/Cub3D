@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   assets2.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/21 09:54:33 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 10:39:22 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:50:12 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,11 @@ char	**check_colors(char *s, t_vars *vars, char **lines_of_files,
 	int		i;
 
 	if (is_digit(s))
+	{
+		free(new_link);
+		ft_free_map(lines_of_files);
 		ft_err("Wrong colors", vars);
+	}
 	str = ft_split(s, ',');
 	i = 0;
 	while (str[i])

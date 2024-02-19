@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 10:49:06 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:58:02 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,29 +128,27 @@ typedef struct s_cub3d
 	int			bits_per_pixel;
 	int			size_line;
 	int			endian;
-	double		dirX;
-	double		dirY;
-	int			mapX;
-	int			mapY;
-	double		planeX;
-	double		planeY;
-	double		time;
-	double		oldTime;
-	double		cameraX;
-	double		rayDirX;
-	double		rayDirY;
-	double		sideDistX;
-	double		sideDistY;
-	double		deltaDistX;
-	double		deltaDistY;
-	double		perpWallDist;
+	double		dir_x;
+	double		dir_y;
+	int			map_x;
+	int			map_y;
+	double		plane_x;
+	double		plane_y;
+	double		camera_x;
+	double		raydir_x;
+	double		raydir_y;
+	double		side_dist_x;
+	double		side_dist_y;
+	double		delta_dist_x;
+	double		delta_dist_y;
+	double		perp_wall_dist;
 	int			side;
-	int			stepX;
-	int			stepY;
-	int			lineHeight;
+	int			step_x;
+	int			step_y;
+	int			line_height;
 	double		wall_x;
-	int			drawStart;
-	int			drawEnd;
+	int			draw_start;
+	int			draw_end;
 	int			directions;
 	int			size;
 	t_data		*data;

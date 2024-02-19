@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 10:01:01 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:50:16 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	display(t_cub3d *cub)
 	}
 	free(cub->param->textures_p);
 	usleep(150);
-	// printf("x : %f   y : %f\n", cub->player->p_x, cub->player->p_y);
 	return (0);
 }
 

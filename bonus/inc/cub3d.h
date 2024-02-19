@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 10:14:38 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:54:42 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,8 +230,7 @@ void				show_sprite(t_cub3d *cub);
 void				init_animation(t_cub3d *cub);
 void				update_animation(t_cub3d *cub);
 void				update_frame(t_cub3d *cub);
-void				add_torchs1(t_cub3d *cub, double x, double y, int start,
-						int end);
+void				add_torchs1(t_cub3d *cub, double x, double y, int start);
 void				display_barrel(t_cub3d *cub);
 
 // Minimap

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/14 16:03:27 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:55:16 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,14 +63,14 @@ void	set_directions(t_cub3d *cub)
 {
 	if (cub->side == 0)
 	{
-		if (cub->rayDirX < 0)
+		if (cub->raydir_x < 0)
 			cub->directions = 3;
 		else
 			cub->directions = 2;
 	}
 	else
 	{
-		if (cub->rayDirY > 0)
+		if (cub->raydir_y > 0)
 			cub->directions = 1;
 		else
 			cub->directions = 0;

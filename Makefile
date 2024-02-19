@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+         #
+#    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/19 10:47:53 by aleite-b         ###   ########.fr        #
+#    Updated: 2024/02/19 14:30:59 by lmoheyma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,7 +42,7 @@ SOURCES = mandatory/src/main.c \
 			mandatory/src/exec/color_utils.c \
 			mandatory/src/exec/utils.c \
 			mandatory/src/exec/utils2.c \
-			mandatory/src/exec/play_game.c \
+			mandatory/src/exec/play_game.c
 
 BSOURCES = bonus/src/main.c \
 			bonus/src/map/assets.c \
@@ -67,11 +67,12 @@ BSOURCES = bonus/src/main.c \
 			bonus/src/exec/utils2.c \
 			bonus/src/exec/utils3.c \
 			bonus/src/exec/play_game.c \
-			bonus/src/minimap/minimap.c \
 			bonus/src/exec/sprite.c \
 			bonus/src/exec/floor_ceiling.c \
 			bonus/src/exec/animation_sprite.c \
-			bonus/src/exec/add_sprites.c
+			bonus/src/exec/add_sprites.c \
+			bonus/src/exec/init_sprites.c \
+			bonus/src/minimap/minimap.c \
 			
 OBJS_BASE = $(SOURCES:.c=.o)
 BOBJS_BASE = $(BSOURCES:.c=.o)
@@ -81,22 +82,27 @@ BOBJS = $(addprefix obj/,$(BOBJS_BASE))
 
 NAME = cub3d
 
-all: obj mobj $(NAME)
+all: $(NAME)
+
+bonus: fclean $(BOBJS)
+	@echo "\n"
+	make -C libft/
+	make -C mlx/
+	@echo "\033[0;32mCompiling cub3D..."
+	$(CC) $(FLAGS) $(INCLUDE) $(MLX) -o $(NAME) $(BOBJS) $(LIB)
+	@echo "\n\033[0mDone !"
 
 obj:
 	mkdir -p obj
-
-mobj:
 	mkdir -p obj/mandatory
 	mkdir -p obj/mandatory/src
 	mkdir -p obj/mandatory/src/map
 	mkdir -p obj/mandatory/src/exec
 	mkdir -p obj/mandatory/src/minimap
-bobj:
 	mkdir -p obj/bonus
 	mkdir -p obj/bonus/src
-	mkdir -p obj/bonus/src/exec
 	mkdir -p obj/bonus/src/map
+	mkdir -p obj/bonus/src/exec
 	mkdir -p obj/bonus/src/minimap
 
 $(NAME): $(OBJS) 
@@ -105,14 +111,6 @@ $(NAME): $(OBJS)
 	make -C mlx/
 	@echo "\033[0;32mCompiling cub3D..."
 	$(CC) $(FLAGS) $(INCLUDE) $(MLX) -o $(NAME) $(OBJS) $(LIB)
-	@echo "\n\033[0mDone !"
-
-bonus: obj bobj $(BOBJS) 
-	@echo "\n"
-	make -C libft/
-	make -C mlx/
-	@echo "\033[0;32mCompiling cub3D..."
-	$(CC) $(FLAGS) $(INCLUDE) $(MLX) -o $(NAME) $(BOBJS) $(LIB)
 	@echo "\n\033[0mDone !"
 
 obj/%.o: %.c
@@ -134,4 +132,4 @@ fclean: clean
 
 re: fclean $(NAME)
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

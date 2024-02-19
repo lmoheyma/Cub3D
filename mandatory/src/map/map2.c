@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map2.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
+/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:16:31 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/12 10:07:19 by aleite-b         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:23:33 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,8 +106,7 @@ int	check_char(char **lines_of_files)
 		while (lines_of_files[i][j])
 		{
 			if (!(ft_strchr("01NSEW", lines_of_files[i][j])
-				|| lines_of_files[i][j] == 32 || (lines_of_files[i][j] >= 9
-						&& lines_of_files[i][j] <= 13)))
+				|| lines_of_files[i][j] == 32))
 				return (1);
 			if (ft_strchr("NSEW", lines_of_files[i][j]))
 				count++;
