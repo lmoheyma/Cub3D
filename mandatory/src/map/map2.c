@@ -6,7 +6,7 @@
 /*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/18 11:16:31 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 14:23:33 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 19:12:30 by lmoheyma         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,6 +116,8 @@ int	check_char(char **lines_of_files)
 		}
 		i++;
 	}
+	if (count == 0)
+		return (1);
 	return (0);
 }
 
