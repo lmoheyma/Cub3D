@@ -6,7 +6,7 @@
 #    By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/09 11:45:38 by aleite-b          #+#    #+#              #
-#    Updated: 2024/02/19 14:30:59 by lmoheyma         ###   ########.fr        #
+#    Updated: 2024/02/19 14:40:11 by lmoheyma         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,15 +76,16 @@ BSOURCES = bonus/src/main.c \
 			
 OBJS_BASE = $(SOURCES:.c=.o)
 BOBJS_BASE = $(BSOURCES:.c=.o)
+OBJ_PATH = obj/
 
-OBJS = $(addprefix obj/,$(OBJS_BASE))
-BOBJS = $(addprefix obj/,$(BOBJS_BASE))
+OBJS = $(addprefix $(OBJ_PATH),$(OBJS_BASE))
+BOBJS = $(addprefix $(OBJ_PATH),$(BOBJS_BASE))
 
 NAME = cub3d
 
-all: $(NAME)
+all: $(OBJ_PATH) $(NAME)
 
-bonus: fclean $(BOBJS)
+bonus: fclean $(OBJ_PATH) $(BOBJS)
 	@echo "\n"
 	make -C libft/
 	make -C mlx/
@@ -92,7 +93,7 @@ bonus: fclean $(BOBJS)
 	$(CC) $(FLAGS) $(INCLUDE) $(MLX) -o $(NAME) $(BOBJS) $(LIB)
 	@echo "\n\033[0mDone !"
 
-obj:
+$(OBJ_PATH):
 	mkdir -p obj
 	mkdir -p obj/mandatory
 	mkdir -p obj/mandatory/src
@@ -113,7 +114,7 @@ $(NAME): $(OBJS)
 	$(CC) $(FLAGS) $(INCLUDE) $(MLX) -o $(NAME) $(OBJS) $(LIB)
 	@echo "\n\033[0mDone !"
 
-obj/%.o: %.c
+$(OBJ_PATH)%.o: %.c
 	@printf "\033[0;33mGenerating cub3D objects... %-33.33s\r" $@
 	$(CC) $(FLAGS) $(INCLUDE) -c $< -o $@
 
