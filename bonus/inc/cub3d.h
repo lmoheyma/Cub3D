@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/09/25 12:36:22 by aleite-b          #+#    #+#             */
-/*   Updated: 2024/02/19 01:10:47 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 08:57:18 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <math.h>
+# include <pthread.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include <pthread.h>
 
 # define WIDTH 1920
 # define HEIGHT 1080
@@ -47,22 +47,22 @@
 
 typedef struct s_fc
 {
-	int		p;
-	int		cell_x;
-	int		cell_y;
-	int		t_x;
-	int		t_y;
-	float	raydir_x0;
-	float	raydir_y0;
-	float	raydir_x1;
-	float	raydir_y1;
-	float	pos_z;
-	float	row_distance;
-	float	floor_step_x;
-	float	floor_step_y;
-	float	floor_x;
-	float	floor_y;
-} t_fc;
+	int				p;
+	int				cell_x;
+	int				cell_y;
+	int				t_x;
+	int				t_y;
+	float			raydir_x0;
+	float			raydir_y0;
+	float			raydir_x1;
+	float			raydir_y1;
+	float			pos_z;
+	float			row_distance;
+	float			floor_step_x;
+	float			floor_step_y;
+	float			floor_x;
+	float			floor_y;
+}					t_fc;
 
 typedef struct s_assets
 {
@@ -143,8 +143,8 @@ typedef struct s_tmpimg
 
 typedef struct s_sprite
 {
-	double				x;
-	double				y;
+	double			x;
+	double			y;
 	int				texture;
 	int				collected;
 }					t_sprite;
@@ -226,12 +226,13 @@ typedef struct s_cub3d
 t_sprite			*add_sprite(t_cub3d *cub, double x, double y, int texture);
 void				init_sprite(t_cub3d *cub);
 void				display_sprite(t_cub3d *cub, int index);
-void 				show_sprite(t_cub3d *cub);
+void				show_sprite(t_cub3d *cub);
 void				init_animation(t_cub3d *cub);
-void 				update_animation(t_cub3d *cub);
-void 				update_frame(t_cub3d *cub);
-void 				add_torchs1(t_cub3d * cub, double x, double y, int start, int end);
-void 				display_barrel(t_cub3d *cub);
+void				update_animation(t_cub3d *cub);
+void				update_frame(t_cub3d *cub);
+void				add_torchs1(t_cub3d *cub, double x, double y, int start,
+						int end);
+void				display_barrel(t_cub3d *cub);
 
 // Minimap
 void				fshow_minimap(t_cub3d *cub);
@@ -297,7 +298,7 @@ void				img_error(t_cub3d *cub);
 t_data				*init_data(t_vars *vars);
 void				init_player(t_cub3d cub, t_vars *vars);
 void				main_loop(t_cub3d *cub);
-void 				init_images(t_cub3d *cub);
+void				init_images(t_cub3d *cub);
 
 // XPM
 void				path_to_xpm(t_cub3d *cub);
@@ -317,7 +318,8 @@ char				*put_link_of_asset(char *asset_case, char *s, t_vars *vars,
 void				init_assets(t_vars *vars, void *ptr);
 void				update_color_link(char ***old_link, char *new_link,
 						t_vars *vars, char **lines_of_files);
-char				**check_colors(char *s, t_vars *vars);
+char				**check_colors(char *s, t_vars *vars,
+						char **lines_of_files, char *new_link);
 
 // FILE
 

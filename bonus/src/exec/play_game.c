@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   play_game.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 01:20:34 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:01:38 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,9 +80,9 @@ int	close_window(t_cub3d *cub)
 
 int	mouse_move_hook(int x, int y, t_cub3d *cub)
 {
-	static int		old_x = WIDTH / 2;
+	static int	old_x = WIDTH / 2;
+
 	(void)y;
-	
 	// if (x > WIDTH - 20)
 	// {
 	// 	x = 20;

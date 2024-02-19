@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 23:46:45 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 01:08:39 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:01:09 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	*convert(t_cub3d *cub, char *path)
 	return (buffer);
 }
 
-void add_torchs_textures(t_cub3d *cub)
+void	add_torchs_textures(t_cub3d *cub)
 {
 	cub->param->textures[6] = convert(cub, "./assets/torch/torch1.xpm");
 	cub->param->textures[7] = convert(cub, "./assets/torch/torch2.xpm");

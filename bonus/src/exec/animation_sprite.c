@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   animation_sprite.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/16 23:08:58 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 01:10:34 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:01:50 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void init_animation(t_cub3d *cub)
+void	init_animation(t_cub3d *cub)
 {
 	cub->frame_rate = 60;
 	cub->animation_speed = 10;
@@ -20,7 +20,7 @@ void init_animation(t_cub3d *cub)
 	cub->current_frame = 0;
 }
 
-void update_frame(t_cub3d *cub)
+void	update_frame(t_cub3d *cub)
 {
 	cub->frame_count++;
 	if (cub->frame_count >= cub->frame_rate / cub->animation_speed)
@@ -30,7 +30,7 @@ void update_frame(t_cub3d *cub)
 	}
 }
 
-void update_animation(t_cub3d *cub)
+void	update_animation(t_cub3d *cub)
 {
 	if (cub->current_frame == 0)
 	{
@@ -69,7 +69,7 @@ void update_animation(t_cub3d *cub)
 	}
 }
 
-void display_barrel(t_cub3d *cub)
+void	display_barrel(t_cub3d *cub)
 {
 	int	i;
 

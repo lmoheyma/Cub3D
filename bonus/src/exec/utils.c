@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: lmoheyma <lmoheyma@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aleite-b <aleite-b@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/08 22:14:01 by lmoheyma          #+#    #+#             */
-/*   Updated: 2024/02/19 01:25:30 by lmoheyma         ###   ########.fr       */
+/*   Updated: 2024/02/19 10:01:01 by aleite-b         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void	listen_input(t_cub3d *cub)
 int	display(t_cub3d *cub)
 {
 	int	i;
-	
+
 	cub->player->has_move += move_player(cub);
 	init_textures_p(cub);
 	raycasting(cub);
@@ -88,7 +88,7 @@ int	display(t_cub3d *cub)
 void	main_loop(t_cub3d *cub)
 {
 	int	i;
-	
+
 	setup_images(cub);
 	init_textures_p(cub);
 	raycasting(cub);
